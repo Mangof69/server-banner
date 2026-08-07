@@ -3,36 +3,45 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Добро пожаловать на сервер</title>
+<title>Добро пожаловать!</title>
 <style>
-html,body{margin:0;padding:0;background:#080808;color:#ddd;font-family:Arial,Helvetica,sans-serif}
-body{min-height:100vh;display:flex;align-items:center;justify-content:center}
-.banner{width:min(1200px,94vw);background:#111;border:1px solid #2c2c2c;border-radius:12px;overflow:hidden;box-shadow:0 15px 60px #000}
-.header{height:68px;display:flex;align-items:center;padding:0 24px;background:#191919;border-bottom:2px solid #e5a900}
-.logo{font-size:28px;color:#e5a900;margin-right:14px}
-.title{font-size:25px;font-weight:700;color:#e5a900}
-.photo{width:100%;aspect-ratio:16/6;background:url("banner.jpg") center/cover no-repeat}
-.content{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:28px;padding:20px 24px 26px;background:#101010}
-h2{margin:0 0 12px;color:#e5a900;font-size:19px}
-p{margin:7px 0;font-size:14px;line-height:1.35;color:#ddd}
-.footer{display:flex;justify-content:flex-end;padding:14px 18px;background:#171717;border-top:1px solid #2e2e2e}
-.button{display:inline-block;padding:11px 42px;border-radius:5px;background:#e5a900;color:#111;text-decoration:none;font-weight:700;font-size:16px}
-@media(max-width:850px){.content{grid-template-columns:1fr}.photo{aspect-ratio:16/7}.title{font-size:19px}}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#111;color:#eee;font-family:Arial,Helvetica,sans-serif}
+body{min-height:100%;overflow-x:hidden}
+.page{width:100%;background:#111}
+.header{height:64px;display:flex;align-items:center;padding:0 20px;background:#181818;border-bottom:2px solid #e5a900}
+.logo{font-size:29px;color:#e5a900;margin-right:12px;line-height:1}
+.title{font-size:24px;font-weight:700;color:#e5a900}
+.photo{width:100%;height:clamp(180px,32vw,430px);background:url("banner.jpg") center/cover no-repeat}
+.content{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:22px;padding:20px 22px 18px;background:#101010}
+section{min-width:0}
+h2{margin:0 0 10px;color:#e5a900;font-size:18px}
+p{margin:6px 0;font-size:14px;line-height:1.4;color:#ddd}
+.actions{display:flex;flex-wrap:wrap;gap:10px;padding:14px 18px;background:#171717;border-top:1px solid #2e2e2e}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 20px;border:1px solid #e5a900;border-radius:4px;background:#e5a900;color:#111;text-decoration:none;font-weight:700;font-size:14px;cursor:pointer}
+.button.secondary{background:transparent;color:#e5a900}
+.note{width:100%;font-size:12px;color:#999;margin-top:1px}
+@media(max-width:800px){
+ .header{height:56px;padding:0 14px}.title{font-size:19px}.logo{font-size:24px}
+ .photo{height:240px}
+ .content{grid-template-columns:1fr;gap:16px;padding:16px}
+ .actions{padding:12px;gap:8px}.button{flex:1 1 180px}
+}
 </style>
 </head>
 <body>
-<div class="banner">
+<div class="page">
   <div class="header">
     <div class="logo">⚡</div>
     <div class="title">ДОБРО ПОЖАЛОВАТЬ НА СЕРВЕР</div>
   </div>
 
-  <div class="photo"></div>
+  <div class="photo" aria-label="Баннер сервера"></div>
 
   <div class="content">
     <section>
       <h2>ОСНОВНЫЕ ПРАВИЛА</h2>
-      <p>1. Запрещена распрыжка и банни хоп!</p>
+      <p>1. Запрещена распрыжка и банни-хоп!</p>
       <p>2. Запрещено оскорблять игроков и админов!</p>
       <p>3. Запрещены некорректные ники и клантеги!</p>
       <p>4. Запрещена любая реклама!</p>
@@ -48,14 +57,18 @@ p{margin:7px 0;font-size:14px;line-height:1.35;color:#ddd}
 
     <section>
       <h2>КОНТАКТЫ</h2>
-      <p>VK: VK.COM/DENOK</p>
-      <p>IP: 194.93.2.218:27015</p>
+      <p>VK: denok18</p>
+      <p>IP: <span id="serverAddress">194.93.2.218:27015</span></p>
     </section>
   </div>
 
-  <div class="footer">
-    <a class="button" href="javascript:window.close()">ПОНЯТНО</a>
+  <div class="actions">
+    <a class="button" href="https://vk.ru/denok18" target="_blank" rel="noopener">VK</a>
+    <a class="button secondary" href="steam://connect/194.93.2.218:27015">ДОБАВИТЬ СЕРВЕР В ИЗБРАННОЕ</a>
+    <a class="button secondary" href="javascript:window.close()">ПОНЯТНО</a>
+    <div class="note">Кнопка «Избранное» открывает подключение к серверу. Самостоятельно записать сервер в локальный список Favorites клиента CS:S через SourceMod нельзя — это ограничение клиента.</div>
   </div>
 </div>
 </body>
 </html>
+
