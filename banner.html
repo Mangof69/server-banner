@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Добро пожаловать на сервер</title>
+<style>
+html,body{margin:0;padding:0;background:#080808;color:#ddd;font-family:Arial,Helvetica,sans-serif}
+body{min-height:100vh;display:flex;align-items:center;justify-content:center}
+.banner{width:min(1200px,94vw);background:#111;border:1px solid #2c2c2c;border-radius:12px;overflow:hidden;box-shadow:0 15px 60px #000}
+.header{height:68px;display:flex;align-items:center;padding:0 24px;background:#191919;border-bottom:2px solid #e5a900}
+.logo{font-size:28px;color:#e5a900;margin-right:14px}
+.title{font-size:25px;font-weight:700;color:#e5a900}
+.photo{width:100%;aspect-ratio:16/6;background:url("banner.jpg") center/cover no-repeat}
+.content{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:28px;padding:20px 24px 26px;background:#101010}
+h2{margin:0 0 12px;color:#e5a900;font-size:19px}
+p{margin:7px 0;font-size:14px;line-height:1.35;color:#ddd}
+.footer{display:flex;justify-content:flex-end;padding:14px 18px;background:#171717;border-top:1px solid #2e2e2e}
+.button{display:inline-block;padding:11px 42px;border-radius:5px;background:#e5a900;color:#111;text-decoration:none;font-weight:700;font-size:16px}
+@media(max-width:850px){.content{grid-template-columns:1fr}.photo{aspect-ratio:16/7}.title{font-size:19px}}
+</style>
+</head>
+<body>
+<div class="banner">
+  <div class="header">
+    <div class="logo">⚡</div>
+    <div class="title">ДОБРО ПОЖАЛОВАТЬ НА СЕРВЕР</div>
+  </div>
+
+  <div class="photo"></div>
+
+  <div class="content">
+    <section>
+      <h2>ОСНОВНЫЕ ПРАВИЛА</h2>
+      <p>1. Запрещена распрыжка и банни хоп!</p>
+      <p>2. Запрещено оскорблять игроков и админов!</p>
+      <p>3. Запрещены некорректные ники и клантеги!</p>
+      <p>4. Запрещена любая реклама!</p>
+      <p>5. Запрещено брать AWP когда б закрыто!</p>
+    </section>
+
+    <section>
+      <h2>ИНФОРМАЦИЯ</h2>
+      <p>Играйте честно и уважайте других игроков.</p>
+      <p>При проблемах обратитесь к администрации.</p>
+      <p>Желаем приятной игры!</p>
+    </section>
+
+    <section>
+      <h2>КОНТАКТЫ</h2>
+      <p>VK: VK.COM/DENOK</p>
+      <p>IP: 194.93.2.218:27015</p>
+    </section>
+  </div>
+
+  <div class="footer">
+    <a class="button" href="javascript:window.close()">ПОНЯТНО</a>
+  </div>
+</div>
+</body>
+</html>
