@@ -2,19 +2,11 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Server Banner</title>
 
 <style>
-
-/* ============================================================
-   ОСНОВНЫЕ НАСТРОЙКИ
-   ============================================================ */
 
 * {
     box-sizing: border-box;
@@ -24,7 +16,6 @@ html,
 body {
     margin: 0;
     padding: 0;
-
     width: 100%;
     min-height: 100%;
 
@@ -32,16 +23,15 @@ body {
     color: #eeeeee;
 
     font-family: Arial, Helvetica, sans-serif;
+
+    overflow-x: hidden;
 }
 
 body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-
-    user-select: text;
 }
-
 
 /* ============================================================
    ОСНОВНОЙ БАННЕР
@@ -53,16 +43,14 @@ body {
 
     margin: 0 auto;
 
-    background: #111111;
+    background: #101010;
 
     border: 1px solid #292929;
 
-    box-shadow:
-        0 0 30px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 30px rgba(0,0,0,0.8);
 
     overflow: hidden;
 }
-
 
 /* ============================================================
    КАРТИНКА
@@ -70,9 +58,6 @@ body {
 
 .hero {
     width: 100%;
-
-    margin: 0;
-    padding: 0;
 
     background: #000000;
 
@@ -85,14 +70,13 @@ body {
     width: 100%;
     height: auto;
 
-    max-height: 430px;
+    max-height: 440px;
 
     object-fit: cover;
 
     user-select: none;
     -webkit-user-drag: none;
 }
-
 
 /* ============================================================
    ИНФОРМАЦИЯ
@@ -102,33 +86,36 @@ body {
     display: grid;
 
     grid-template-columns:
-        1.25fr
+        1.2fr
         1fr
         1fr;
 
-    gap: 26px;
+    gap: 25px;
 
-    padding: 23px 28px;
+    padding: 22px 28px;
 
     background: #101010;
 }
 
-
-/* ============================================================
-   ЗАГОЛОВКИ
-   ============================================================ */
-
 .column h2 {
-    margin: 0 0 13px;
+    margin: 0 0 12px;
 
     color: #ffbd00;
 
     font-size: 18px;
-    font-weight: bold;
 
     text-transform: uppercase;
 }
 
+.column p {
+    margin: 6px 0;
+
+    color: #dddddd;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
 
 /* ============================================================
    ПРАВИЛА
@@ -141,7 +128,7 @@ body {
 }
 
 .rules li {
-    margin-bottom: 8px;
+    margin-bottom: 7px;
 
     color: #dddddd;
 
@@ -150,30 +137,14 @@ body {
     line-height: 1.45;
 }
 
-
 /* ============================================================
-   ТЕКСТ
-   ============================================================ */
-
-.column p {
-    margin: 7px 0;
-
-    color: #dddddd;
-
-    font-size: 14px;
-
-    line-height: 1.5;
-}
-
-
-/* ============================================================
-   IP СЕРВЕРА
+   IP
    ============================================================ */
 
 .server-ip {
-    margin-top: 14px;
+    margin-top: 12px;
 
-    padding: 11px 13px;
+    padding: 11px 12px;
 
     background: #181818;
 
@@ -181,25 +152,42 @@ body {
 
     color: #ffffff;
 
-    font-size: 14px;
+    font-size: 15px;
+
     font-weight: bold;
 
-    word-break: break-all;
+    cursor: pointer;
 
-    cursor: text;
+    user-select: none;
 
-    user-select: text;
+    transition:
+        background 0.15s,
+        border-color 0.15s;
 }
 
-
-/* Сам адрес */
+.server-ip:hover {
+    background: #202020;
+}
 
 .server-ip span {
     color: #ffbd00;
-
-    user-select: text;
 }
 
+/* ============================================================
+   СООБЩЕНИЕ О КОПИРОВАНИИ
+   ============================================================ */
+
+.copy-status {
+    min-height: 20px;
+
+    margin-top: 7px;
+
+    color: #8fd14f;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
 
 /* ============================================================
    КОНТАКТЫ
@@ -215,6 +203,7 @@ body {
     color: #ffbd00;
 
     font-size: 14px;
+
     font-weight: bold;
 }
 
@@ -225,7 +214,6 @@ body {
 
     line-height: 1.45;
 }
-
 
 /* ============================================================
    VK
@@ -253,13 +241,10 @@ body {
     text-decoration: none;
 
     font-size: 14px;
+
     font-weight: bold;
 
     cursor: pointer;
-
-    transition:
-        background 0.15s,
-        color 0.15s;
 }
 
 .contact-vk:hover {
@@ -268,9 +253,8 @@ body {
     color: #ffffff;
 }
 
-
 /* ============================================================
-   НИЖНЯЯ КНОПКА
+   КНОПКИ
    ============================================================ */
 
 .buttons {
@@ -279,7 +263,9 @@ body {
     justify-content: center;
     align-items: center;
 
-    padding: 16px 25px 22px;
+    gap: 15px;
+
+    padding: 18px 25px 24px;
 
     background: #101010;
 }
@@ -290,10 +276,10 @@ body {
     justify-content: center;
     align-items: center;
 
-    min-width: 280px;
+    min-width: 240px;
     height: 46px;
 
-    padding: 0 20px;
+    padding: 0 22px;
 
     border: 1px solid #d79f00;
 
@@ -302,7 +288,10 @@ body {
     color: #ffbd00;
 
     font-size: 14px;
+
     font-weight: bold;
+
+    text-decoration: none;
 
     cursor: pointer;
 
@@ -317,6 +306,17 @@ body {
     color: #111111;
 }
 
+.button.vk {
+    border-color: #4d9cff;
+
+    color: #4d9cff;
+}
+
+.button.vk:hover {
+    background: #4d9cff;
+
+    color: #ffffff;
+}
 
 /* ============================================================
    ОКНО ИЗБРАННОГО
@@ -334,7 +334,7 @@ body {
 
     padding: 20px;
 
-    background: rgba(0, 0, 0, 0.88);
+    background: rgba(0,0,0,0.88);
 
     z-index: 100;
 }
@@ -345,24 +345,23 @@ body {
 
 .modal-box {
     width: 100%;
-    max-width: 590px;
+    max-width: 600px;
 
-    padding: 24px;
+    padding: 25px;
 
     background: #111111;
 
     border: 1px solid #e5a900;
 
-    box-shadow:
-        0 0 30px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 30px rgba(0,0,0,0.9);
 }
 
 .modal-box h2 {
-    margin: 0 0 18px;
+    margin: 0 0 20px;
 
     color: #ffbd00;
 
-    font-size: 20px;
+    font-size: 21px;
 }
 
 .modal-box p {
@@ -373,17 +372,12 @@ body {
     line-height: 1.6;
 }
 
-
-/* ============================================================
-   IP В ОКНЕ
-   ============================================================ */
-
 .server-address {
     display: block;
 
-    margin: 17px 0;
+    margin: 18px 0;
 
-    padding: 13px;
+    padding: 14px;
 
     background: #050505;
 
@@ -393,22 +387,17 @@ body {
 
     text-align: center;
 
-    font-size: 19px;
+    font-size: 20px;
+
     font-weight: bold;
-
-    user-select: text;
-
-    cursor: text;
 }
-
-
-/* ============================================================
-   КНОПКА ЗАКРЫТИЯ МОДАЛЬНОГО ОКНА
-   ============================================================ */
 
 .modal-close {
     width: 100%;
-    height: 44px;
+
+    height: 45px;
+
+    margin-top: 10px;
 
     border: 1px solid #d79f00;
 
@@ -416,14 +405,9 @@ body {
 
     color: #ffbd00;
 
-    font-size: 14px;
     font-weight: bold;
 
     cursor: pointer;
-
-    transition:
-        background 0.15s,
-        color 0.15s;
 }
 
 .modal-close:hover {
@@ -432,24 +416,22 @@ body {
     color: #111111;
 }
 
-
 /* ============================================================
    АДАПТАЦИЯ
    ============================================================ */
 
-@media (max-width: 760px) {
+@media (max-width: 700px) {
 
     .info {
         grid-template-columns: 1fr;
 
-        gap: 17px;
+        gap: 15px;
 
         padding: 18px;
     }
 
     .buttons {
-        padding-left: 18px;
-        padding-right: 18px;
+        flex-direction: column;
     }
 
     .button {
@@ -462,22 +444,12 @@ body {
 </style>
 </head>
 
-
 <body>
-
-
-<!-- ==========================================================
-     ОСНОВНОЙ БАННЕР
-     ========================================================== -->
 
 <div class="banner">
 
-
     <!-- ======================================================
-         КАРТИНКА
-
-         В этой папке должен лежать:
-         banner.jpg
+         БАННЕР
          ====================================================== -->
 
     <div class="hero">
@@ -497,16 +469,11 @@ body {
 
     <div class="info">
 
-
-        <!-- ==================================================
-             ПРАВИЛА
-             ================================================== -->
+        <!-- ПРАВИЛА -->
 
         <div class="column">
 
-            <h2>
-                Основные правила
-            </h2>
+            <h2>Основные правила</h2>
 
             <ol class="rules">
 
@@ -519,7 +486,7 @@ body {
                 </li>
 
                 <li>
-                    Запрещены некорректные ники и клантеги!
+                    Запрещены некорректные ники и клан-теги!
                 </li>
 
                 <li>
@@ -535,15 +502,11 @@ body {
         </div>
 
 
-        <!-- ==================================================
-             ИНФОРМАЦИЯ
-             ================================================== -->
+        <!-- ИНФОРМАЦИЯ -->
 
         <div class="column">
 
-            <h2>
-                Информация
-            </h2>
+            <h2>Информация</h2>
 
             <p>
                 Играйте честно и уважайте других игроков.
@@ -558,30 +521,35 @@ body {
             </p>
 
 
-            <div class="server-ip">
+            <!-- КЛИКАБЕЛЬНЫЙ IP -->
 
+            <div
+                class="server-ip"
+                id="serverIP"
+                onclick="copyServerIP()"
+                title="Нажмите, чтобы скопировать IP"
+            >
                 IP:
-                <span id="serverIP">
+                <span id="serverIPText">
                     194.93.2.218:27015
                 </span>
-
             </div>
+
+
+            <div
+                class="copy-status"
+                id="copyStatus"
+            ></div>
 
         </div>
 
 
-        <!-- ==================================================
-             КОНТАКТЫ
-             ================================================== -->
+        <!-- КОНТАКТЫ -->
 
         <div class="column">
 
-            <h2>
-                Контакты
-            </h2>
+            <h2>Контакты</h2>
 
-
-            <!-- ГЛАВНЫЙ СОЗДАТЕЛЬ -->
 
             <div class="contact-item">
 
@@ -596,8 +564,6 @@ body {
             </div>
 
 
-            <!-- VIP -->
-
             <div class="contact-item">
 
                 <div class="contact-label">
@@ -608,8 +574,6 @@ body {
                     •★Santa Lucia★• [87]
                 </div>
 
-
-                <!-- VK -->
 
                 <a
                     class="contact-vk"
@@ -628,10 +592,20 @@ body {
 
 
     <!-- ======================================================
-         КНОПКА ИЗБРАННОГО
+         КНОПКИ
          ====================================================== -->
 
     <div class="buttons">
+
+        <a
+            class="button vk"
+            href="https://vk.ru/denok18"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            🔵 VK
+        </a>
+
 
         <button
             class="button"
@@ -643,12 +617,11 @@ body {
 
     </div>
 
-
 </div>
 
 
 <!-- ==========================================================
-     ОКНО ИНСТРУКЦИИ ИЗБРАННОГО
+     ОКНО ИЗБРАННОГО
      ========================================================== -->
 
 <div
@@ -656,19 +629,11 @@ body {
     id="favoriteModal"
 >
 
-
     <div class="modal-box">
-
 
         <h2>
             ⭐ ДОБАВИТЬ СЕРВЕР В ИЗБРАННОЕ
         </h2>
-
-
-        <p>
-            Добавить сервер в избранное можно через
-            браузер серверов CS:S.
-        </p>
 
 
         <p>
@@ -678,14 +643,21 @@ body {
 
             <b>2.</b>
             Перейдите во вкладку
-            <b>«Избранное»</b>.<br>
+            <b>«История»</b>.<br>
 
             <b>3.</b>
-            Нажмите
-            <b>«Добавить сервер»</b>.<br>
+            Найдите наш сервер.<br>
 
             <b>4.</b>
-            Введите адрес нашего сервера.
+            Кликните по серверу правой кнопкой мыши.<br>
+
+            <b>5.</b>
+            Выберите
+            <b>«Добавить сервер в избранное»</b>.<br>
+
+            <b>6.</b>
+            После этого сервер появится во вкладке
+            <b>«Избранное»</b>.
 
         </p>
 
@@ -706,7 +678,6 @@ body {
             ЗАКРЫТЬ
         </button>
 
-
     </div>
 
 </div>
@@ -718,8 +689,8 @@ body {
    ПАРАМЕТРЫ URL
    ============================================================ */
 
-function getParameter(name) {
-
+function getParameter(name)
+{
     const params =
         new URLSearchParams(
             window.location.search
@@ -733,8 +704,8 @@ function getParameter(name) {
    ОБНОВЛЕНИЕ IP
    ============================================================ */
 
-function updateServerIP() {
-
+function updateServerIP()
+{
     const ip =
         getParameter("ip");
 
@@ -742,15 +713,8 @@ function updateServerIP() {
         getParameter("port");
 
 
-    /*
-     * Если SourceMod передаст:
-     *
-     * ?ip=194.93.2.218&port=27015
-     *
-     * тогда IP автоматически изменится.
-     */
-
-    if (!ip || !port) {
+    if (!ip || !port)
+    {
         return;
     }
 
@@ -759,11 +723,10 @@ function updateServerIP() {
         ip + ":" + port;
 
 
-    const serverIP =
+    const ipText =
         document.getElementById(
-            "serverIP"
+            "serverIPText"
         );
-
 
     const favoriteIP =
         document.getElementById(
@@ -771,132 +734,214 @@ function updateServerIP() {
         );
 
 
-    if (serverIP) {
-
-        serverIP.textContent =
+    if (ipText)
+    {
+        ipText.textContent =
             address;
-
     }
 
 
-    if (favoriteIP) {
-
+    if (favoriteIP)
+    {
         favoriteIP.textContent =
             address;
-
     }
-
 }
 
 
 /* ============================================================
-   ИЗБРАННОЕ — ОТКРЫТЬ
+   КОПИРОВАНИЕ IP
    ============================================================ */
 
-function showFavorite() {
-
-    const modal =
+function copyServerIP()
+{
+    const ipElement =
         document.getElementById(
-            "favoriteModal"
+            "serverIPText"
+        );
+
+    const status =
+        document.getElementById(
+            "copyStatus"
         );
 
 
-    if (modal) {
+    if (!ipElement || !status)
+    {
+        return;
+    }
 
-        modal.classList.add(
+
+    const ip =
+        ipElement.textContent.trim();
+
+
+    /*
+     * Современный способ
+     */
+
+    if (
+        navigator.clipboard &&
+        navigator.clipboard.writeText
+    )
+    {
+        navigator.clipboard
+            .writeText(ip)
+            .then(function()
+            {
+                status.textContent =
+                    "✓ IP СКОПИРОВАН";
+            })
+            .catch(function()
+            {
+                fallbackCopy(ip);
+            });
+
+        return;
+    }
+
+
+    fallbackCopy(ip);
+}
+
+
+/* ============================================================
+   РЕЗЕРВНОЕ КОПИРОВАНИЕ
+   ============================================================ */
+
+function fallbackCopy(text)
+{
+    const status =
+        document.getElementById(
+            "copyStatus"
+        );
+
+
+    const textarea =
+        document.createElement(
+            "textarea"
+        );
+
+
+    textarea.value = text;
+
+    textarea.style.position =
+        "fixed";
+
+    textarea.style.left =
+        "-9999px";
+
+
+    document.body.appendChild(
+        textarea
+    );
+
+
+    textarea.focus();
+
+    textarea.select();
+
+
+    try
+    {
+        document.execCommand(
+            "copy"
+        );
+
+        status.textContent =
+            "✓ IP СКОПИРОВАН";
+    }
+    catch(e)
+    {
+        status.textContent =
+            "Выделите IP и скопируйте вручную";
+    }
+
+
+    document.body.removeChild(
+        textarea
+    );
+}
+
+
+/* ============================================================
+   ОКНО ИЗБРАННОГО
+   ============================================================ */
+
+function showFavorite()
+{
+    document
+        .getElementById(
+            "favoriteModal"
+        )
+        .classList.add(
             "active"
         );
-
-    }
-
 }
 
 
-/* ============================================================
-   ИЗБРАННОЕ — ЗАКРЫТЬ
-   ============================================================ */
-
-function hideFavorite() {
-
-    const modal =
-        document.getElementById(
+function hideFavorite()
+{
+    document
+        .getElementById(
             "favoriteModal"
-        );
-
-
-    if (modal) {
-
-        modal.classList.remove(
+        )
+        .classList.remove(
             "active"
         );
-
-    }
-
 }
 
 
 /* ============================================================
-   ЗАПРЕТ КОНТЕКСТНОГО МЕНЮ HTML
+   БЛОКИРОВКА ПКМ
    ============================================================ */
-
-/*
- * Запрещаем стандартное ПКМ-меню браузера страницы.
- *
- * Важно:
- * встроенный HTML/VGUI браузер CS:S может иметь
- * собственное контекстное меню. Если игра перехватывает
- * ПКМ раньше HTML, JavaScript не сможет его убрать.
- */
 
 document.addEventListener(
     "contextmenu",
-    function(event) {
-
+    function(event)
+    {
         event.preventDefault();
 
         return false;
-
     },
     false
 );
 
 
 /* ============================================================
-   НЕ ДАЁМ КАРТИНКЕ ПЕРЕТАСКИВАТЬСЯ
+   ЗАПРЕТ ПЕРЕТАСКИВАНИЯ КАРТИНКИ
    ============================================================ */
 
 document.addEventListener(
     "dragstart",
-    function(event) {
-
+    function(event)
+    {
         if (
             event.target &&
             event.target.tagName === "IMG"
-        ) {
-
+        )
+        {
             event.preventDefault();
-
         }
-
     },
     false
 );
 
 
 /* ============================================================
-   ESC — ЗАКРЫТЬ ОКНО ИЗБРАННОГО
+   ESC
    ============================================================ */
 
 document.addEventListener(
     "keydown",
-    function(event) {
-
-        if (event.key === "Escape") {
-
+    function(event)
+    {
+        if (
+            event.key === "Escape"
+        )
+        {
             hideFavorite();
-
         }
-
     },
     false
 );
@@ -909,7 +954,6 @@ document.addEventListener(
 updateServerIP();
 
 </script>
-
 
 </body>
 </html>
