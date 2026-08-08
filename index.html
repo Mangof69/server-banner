@@ -1,154 +1,184 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Добро пожаловать на сервер</title>
 
-<style>
-    * {
-        box-sizing: border-box;
-    }
+<style type="text/css">
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #080808;
+    color: #eeeeee;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
 
-    html, body {
-        margin: 0;
-        padding: 0;
-        background: #0b0b0b;
-        color: #fff;
-        font-family: Arial, Helvetica, sans-serif;
-    }
+body {
+    width: 100%;
+}
 
-    body {
-        min-height: 100vh;
-    }
+.banner {
+    width: 96%;
+    max-width: 1100px;
+    margin: 10px auto;
+    background: #111111;
+    border: 1px solid #292929;
+}
 
-    .banner {
-        width: 100%;
-        max-width: 1100px;
-        margin: 0 auto;
-        background: #101010;
-        border: 1px solid #292929;
+.header {
+    height: 58px;
+    line-height: 58px;
+    padding-left: 20px;
+    background: #111111;
+    border-bottom: 2px solid #e5a900;
+    color: #ffbd00;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.header .icon {
+    font-size: 25px;
+    margin-right: 10px;
+}
+
+.hero {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 420px;
+    border: 0;
+}
+
+.content {
+    width: 100%;
+    background: #101010;
+}
+
+.column {
+    display: inline-block;
+    vertical-align: top;
+    width: 29%;
+    min-height: 230px;
+    margin: 20px 1.5%;
+}
+
+.column:first-child {
+    width: 32%;
+}
+
+.column h2 {
+    margin: 0 0 14px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #333333;
+    color: #ffbd00;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.column p,
+.column li {
+    color: #dddddd;
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+.column ol {
+    margin: 0;
+    padding-left: 22px;
+}
+
+.column li {
+    margin-bottom: 7px;
+}
+
+.server-ip {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 10px 12px;
+    background: #181818;
+    border-left: 3px solid #ffbd00;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.contact-name {
+    color: #ffbd00;
+    font-weight: bold;
+}
+
+.vk-button {
+    display: inline-block;
+    margin-top: 4px;
+    padding: 8px 25px;
+    border: 1px solid #4d9cff;
+    background: #171717;
+    color: #4d9cff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.vk-button:hover {
+    background: #4d9cff;
+    color: #ffffff;
+}
+
+.favorite-wrap {
+    clear: both;
+    text-align: center;
+    padding: 5px 20px 20px 20px;
+    background: #101010;
+}
+
+.favorite-button {
+    display: inline-block;
+    padding: 11px 24px;
+    border: 1px solid #e5a900;
+    background: #171717;
+    color: #ffbd00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.favorite-button:hover {
+    background: #ffbd00;
+    color: #111111;
+}
+
+.footer {
+    text-align: center;
+    background: #101010;
+    border-top: 1px solid #292929;
+    padding: 14px;
+}
+
+.ok-button {
+    padding: 10px 45px;
+    border: 1px solid #e5a900;
+    background: #171717;
+    color: #ffbd00;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.ok-button:hover {
+    background: #ffbd00;
+    color: #111111;
+}
+
+/* Чтобы старый браузер CS:S не ломал страницу */
+@media screen and (max-width: 750px) {
+    .column,
+    .column:first-child {
+        display: block;
+        width: 90%;
+        margin: 20px auto;
     }
 
     .header {
-        height: 72px;
-        display: flex;
-        align-items: center;
-        gap: 18px;
-        padding: 0 24px;
-        border-bottom: 2px solid #e5a900;
-        color: #ffb900;
-        font-size: 30px;
-        font-weight: bold;
+        font-size: 17px;
     }
-
-    .header .icon {
-        font-size: 36px;
-    }
-
-    .hero {
-        width: 100%;
-        display: block;
-        max-height: 430px;
-        object-fit: cover;
-    }
-
-    .content {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 35px;
-        padding: 22px 28px 28px;
-    }
-
-    .column h2 {
-        margin: 0 0 15px;
-        color: #ffb900;
-        font-size: 20px;
-    }
-
-    .column p,
-    .column li {
-        color: #e5e5e5;
-        font-size: 16px;
-        line-height: 1.55;
-    }
-
-    .column ol {
-        margin: 0;
-        padding-left: 22px;
-    }
-
-    .server-ip {
-        display: inline-block;
-        margin-top: 10px;
-        padding: 10px 14px;
-        background: #181818;
-        border-left: 4px solid #ffb900;
-        font-weight: bold;
-        font-size: 16px;
-    }
-
-    .contact-name {
-        color: #ffb900;
-        font-weight: bold;
-    }
-
-    .vk-button {
-        display: inline-block;
-        margin-top: 12px;
-        padding: 9px 25px;
-        border: 1px solid #168cff;
-        color: #fff;
-        background: transparent;
-        text-decoration: none;
-        font-weight: bold;
-        transition: .2s;
-    }
-
-    .vk-button:hover {
-        background: #168cff;
-    }
-
-    .favorite-wrap {
-        text-align: center;
-        padding: 0 20px 22px;
-    }
-
-    .favorite-button,
-    .ok-button {
-        display: inline-block;
-        border: 1px solid #e5a900;
-        background: transparent;
-        color: #ffb900;
-        padding: 12px 24px;
-        font-size: 16px;
-        font-weight: bold;
-        text-decoration: none;
-        cursor: pointer;
-        transition: .2s;
-    }
-
-    .favorite-button:hover,
-    .ok-button:hover {
-        background: #e5a900;
-        color: #111;
-    }
-
-    .footer {
-        border-top: 1px solid #292929;
-        text-align: center;
-        padding: 15px;
-    }
-
-    @media (max-width: 800px) {
-        .content {
-            grid-template-columns: 1fr;
-        }
-
-        .header {
-            font-size: 24px;
-        }
-    }
+}
 </style>
 </head>
 
@@ -161,13 +191,14 @@
         <span>ДОБРО ПОЖАЛОВАТЬ НА СЕРВЕР</span>
     </div>
 
-    <!-- Файл banner.jpg должен лежать рядом с index.html -->
+    <!-- banner.jpg должен лежать рядом с index.html -->
     <img class="hero" src="banner.jpg" alt="Баннер сервера">
 
     <div class="content">
 
         <div class="column">
             <h2>ОСНОВНЫЕ ПРАВИЛА</h2>
+
             <ol>
                 <li>Запрещена распрыжка и банни-хоп!</li>
                 <li>Запрещено оскорблять игроков и админов!</li>
@@ -179,6 +210,7 @@
 
         <div class="column">
             <h2>ИНФОРМАЦИЯ</h2>
+
             <p>Играйте честно и уважайте других игроков.</p>
             <p>При проблемах обращайтесь к администрации.</p>
             <p>Желаем приятной игры!</p>
