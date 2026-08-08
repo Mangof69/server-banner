@@ -1,97 +1,154 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Добро пожаловать на сервер</title>
 
 <style>
-html, body {
-    margin: 0;
-    padding: 0;
-    background: #0b0b0b;
-    color: #eeeeee;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.banner {
-    width: 100%;
-    background: #101010;
-}
-
-.header {
-    padding: 18px;
-    background: #111111;
-    border-bottom: 2px solid #e5a900;
-    color: #ffbd00;
-    font-size: 22px;
-    font-weight: bold;
-}
-
-.hero {
-    display: block;
-    width: 100%;
-    height: auto;
-    border: 0;
-}
-
-.content {
-    overflow: hidden;
-    padding: 10px 0 20px;
-}
-
-.column {
-    float: left;
-    width: 30%;
-    margin: 15px 1.6%;
-}
-
-.column h2 {
-    color: #ffbd00;
-    font-size: 17px;
-    border-bottom: 1px solid #333333;
-    padding-bottom: 8px;
-}
-
-.column p,
-.column li {
-    color: #dddddd;
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-.column ol {
-    padding-left: 22px;
-}
-
-.server-ip {
-    margin-top: 12px;
-    padding: 10px;
-    background: #181818;
-    border-left: 3px solid #ffbd00;
-    color: #ffffff;
-    font-weight: bold;
-}
-
-.contact {
-    color: #ffbd00;
-    font-weight: bold;
-}
-
-.info {
-    clear: both;
-    padding: 15px 20px 20px;
-    border-top: 1px solid #292929;
-    text-align: center;
-    color: #999999;
-}
-
-@media screen and (max-width: 760px) {
-    .column {
-        float: none;
-        width: 90%;
-        margin: 18px auto;
+    * {
+        box-sizing: border-box;
     }
-}
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        background: #0b0b0b;
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+    }
+
+    .banner {
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+        background: #101010;
+        border: 1px solid #292929;
+    }
+
+    .header {
+        height: 72px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 0 24px;
+        border-bottom: 2px solid #e5a900;
+        color: #ffb900;
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .header .icon {
+        font-size: 36px;
+    }
+
+    .hero {
+        width: 100%;
+        display: block;
+        max-height: 430px;
+        object-fit: cover;
+    }
+
+    .content {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 35px;
+        padding: 22px 28px 28px;
+    }
+
+    .column h2 {
+        margin: 0 0 15px;
+        color: #ffb900;
+        font-size: 20px;
+    }
+
+    .column p,
+    .column li {
+        color: #e5e5e5;
+        font-size: 16px;
+        line-height: 1.55;
+    }
+
+    .column ol {
+        margin: 0;
+        padding-left: 22px;
+    }
+
+    .server-ip {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px 14px;
+        background: #181818;
+        border-left: 4px solid #ffb900;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .contact-name {
+        color: #ffb900;
+        font-weight: bold;
+    }
+
+    .vk-button {
+        display: inline-block;
+        margin-top: 12px;
+        padding: 9px 25px;
+        border: 1px solid #168cff;
+        color: #fff;
+        background: transparent;
+        text-decoration: none;
+        font-weight: bold;
+        transition: .2s;
+    }
+
+    .vk-button:hover {
+        background: #168cff;
+    }
+
+    .favorite-wrap {
+        text-align: center;
+        padding: 0 20px 22px;
+    }
+
+    .favorite-button,
+    .ok-button {
+        display: inline-block;
+        border: 1px solid #e5a900;
+        background: transparent;
+        color: #ffb900;
+        padding: 12px 24px;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+        transition: .2s;
+    }
+
+    .favorite-button:hover,
+    .ok-button:hover {
+        background: #e5a900;
+        color: #111;
+    }
+
+    .footer {
+        border-top: 1px solid #292929;
+        text-align: center;
+        padding: 15px;
+    }
+
+    @media (max-width: 800px) {
+        .content {
+            grid-template-columns: 1fr;
+        }
+
+        .header {
+            font-size: 24px;
+        }
+    }
 </style>
 </head>
 
@@ -100,16 +157,17 @@ html, body {
 <div class="banner">
 
     <div class="header">
-        ⚡ ДОБРО ПОЖАЛОВАТЬ НА СЕРВЕР
+        <span class="icon">⚡</span>
+        <span>ДОБРО ПОЖАЛОВАТЬ НА СЕРВЕР</span>
     </div>
 
+    <!-- Файл banner.jpg должен лежать рядом с index.html -->
     <img class="hero" src="banner.jpg" alt="Баннер сервера">
 
     <div class="content">
 
         <div class="column">
             <h2>ОСНОВНЫЕ ПРАВИЛА</h2>
-
             <ol>
                 <li>Запрещена распрыжка и банни-хоп!</li>
                 <li>Запрещено оскорблять игроков и админов!</li>
@@ -121,7 +179,6 @@ html, body {
 
         <div class="column">
             <h2>ИНФОРМАЦИЯ</h2>
-
             <p>Играйте честно и уважайте других игроков.</p>
             <p>При проблемах обращайтесь к администрации.</p>
             <p>Желаем приятной игры!</p>
@@ -135,27 +192,35 @@ html, body {
             <h2>КОНТАКТЫ</h2>
 
             <p>
-                <span class="contact">Гл. Создатель:</span><br>
+                <span class="contact-name">Гл. Создатель:</span><br>
                 •★DangA★• [90]
             </p>
 
             <p>
-                <span class="contact">Покупка VIP:</span><br>
+                <span class="contact-name">Покупка VIP обращаться:</span><br>
                 •★Santa Lucia★• [87]
             </p>
 
-            <p>
-                VK: vk.ru/santalucia
-            </p>
+            <a class="vk-button"
+               href="https://vk.ru/santalucia"
+               target="_blank">
+                VK
+            </a>
         </div>
 
     </div>
 
-    <div class="info">
-        Для помощи используйте команды:<br><br>
-        <b>!favorite</b> — инструкция по добавлению сервера<br>
-        <b>!contacts</b> — контакты сервера<br>
-        <b>!banner</b> — открыть баннер повторно
+    <div class="favorite-wrap">
+        <a class="favorite-button"
+           href="steam://connect/194.93.2.218:27015">
+            ★ ДОБАВИТЬ СЕРВЕР В ИЗБРАННОЕ
+        </a>
+    </div>
+
+    <div class="footer">
+        <button class="ok-button" onclick="window.close();">
+            ПОНЯТНО
+        </button>
     </div>
 
 </div>
