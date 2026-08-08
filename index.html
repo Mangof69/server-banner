@@ -2,42 +2,29 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Server Welcome Banner</title>
-<style type="text/css">
+<title>Добро пожаловать на сервер</title>
+
+<style>
 html, body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    background: #080808;
+    background: #0b0b0b;
     color: #eeeeee;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-}
-
-body {
-    overflow-x: hidden;
 }
 
 .banner {
     width: 100%;
-    margin: 0;
     background: #101010;
 }
 
 .header {
-    height: 58px;
-    line-height: 58px;
-    padding-left: 18px;
+    padding: 18px;
     background: #111111;
     border-bottom: 2px solid #e5a900;
     color: #ffbd00;
-    font-size: 21px;
+    font-size: 22px;
     font-weight: bold;
-}
-
-.header .icon {
-    margin-right: 9px;
-    font-size: 24px;
 }
 
 .hero {
@@ -48,28 +35,21 @@ body {
 }
 
 .content {
-    width: 100%;
-    background: #101010;
     overflow: hidden;
+    padding: 10px 0 20px;
 }
 
 .column {
     float: left;
     width: 30%;
-    margin: 20px 1.65%;
-    min-height: 220px;
-}
-
-.column.rules {
-    width: 31%;
+    margin: 15px 1.6%;
 }
 
 .column h2 {
-    margin: 0 0 13px 0;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #333333;
     color: #ffbd00;
     font-size: 17px;
+    border-bottom: 1px solid #333333;
+    padding-bottom: 8px;
 }
 
 .column p,
@@ -80,12 +60,7 @@ body {
 }
 
 .column ol {
-    margin: 0;
     padding-left: 22px;
-}
-
-.column li {
-    margin-bottom: 7px;
 }
 
 .server-ip {
@@ -97,98 +72,27 @@ body {
     font-weight: bold;
 }
 
-.contact-name {
+.contact {
     color: #ffbd00;
     font-weight: bold;
 }
 
-.vk-button {
-    display: inline-block;
-    margin-top: 2px;
-    padding: 8px 24px;
-    border: 1px solid #4d9cff;
-    background: #171717;
-    color: #4d9cff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.favorite-area {
+.info {
     clear: both;
-    padding: 5px 18px 20px 18px;
-    text-align: center;
-    background: #101010;
-}
-
-.favorite-button {
-    display: inline-block;
-    padding: 11px 22px;
-    border: 1px solid #e5a900;
-    background: #171717;
-    color: #ffbd00;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.favorite-button:hover,
-.vk-button:hover {
-    background: #252525;
-}
-
-.favorite-help {
-    display: none;
-    max-width: 720px;
-    margin: 15px auto 0 auto;
-    padding: 14px;
-    text-align: left;
-    background: #181818;
-    border: 1px solid #333333;
-    color: #dddddd;
-    line-height: 1.55;
-}
-
-.favorite-help strong {
-    color: #ffbd00;
-}
-
-.footer {
-    clear: both;
-    padding: 12px;
+    padding: 15px 20px 20px;
     border-top: 1px solid #292929;
-    background: #0d0d0d;
     text-align: center;
-    color: #777777;
-    font-size: 12px;
+    color: #999999;
 }
 
 @media screen and (max-width: 760px) {
-    .column,
-    .column.rules {
+    .column {
         float: none;
-        width: 92%;
+        width: 90%;
         margin: 18px auto;
-        min-height: 0;
-    }
-
-    .header {
-        font-size: 17px;
     }
 }
 </style>
-
-<script type="text/javascript">
-function showFavoriteHelp() {
-    var box = document.getElementById('favoriteHelp');
-
-    if (box.style.display == 'block') {
-        box.style.display = 'none';
-    } else {
-        box.style.display = 'block';
-    }
-
-    return false;
-}
-</script>
 </head>
 
 <body>
@@ -196,16 +100,16 @@ function showFavoriteHelp() {
 <div class="banner">
 
     <div class="header">
-        <span class="icon">⚡</span>
-        <span>ДОБРО ПОЖАЛОВАТЬ НА СЕРВЕР</span>
+        ⚡ ДОБРО ПОЖАЛОВАТЬ НА СЕРВЕР
     </div>
 
     <img class="hero" src="banner.jpg" alt="Баннер сервера">
 
     <div class="content">
 
-        <div class="column rules">
+        <div class="column">
             <h2>ОСНОВНЫЕ ПРАВИЛА</h2>
+
             <ol>
                 <li>Запрещена распрыжка и банни-хоп!</li>
                 <li>Запрещено оскорблять игроков и админов!</li>
@@ -217,6 +121,7 @@ function showFavoriteHelp() {
 
         <div class="column">
             <h2>ИНФОРМАЦИЯ</h2>
+
             <p>Играйте честно и уважайте других игроков.</p>
             <p>При проблемах обращайтесь к администрации.</p>
             <p>Желаем приятной игры!</p>
@@ -230,44 +135,27 @@ function showFavoriteHelp() {
             <h2>КОНТАКТЫ</h2>
 
             <p>
-                <span class="contact-name">Гл. Создатель:</span><br>
+                <span class="contact">Гл. Создатель:</span><br>
                 •★DangA★• [90]
             </p>
 
             <p>
-                <span class="contact-name">Покупка VIP обращаться:</span><br>
+                <span class="contact">Покупка VIP:</span><br>
                 •★Santa Lucia★• [87]
             </p>
 
-            <a class="vk-button"
-               href="https://vk.ru/santalucia"
-               target="_blank">
-                VK
-            </a>
+            <p>
+                VK: vk.ru/santalucia
+            </p>
         </div>
 
     </div>
 
-    <div class="favorite-area">
-        <a class="favorite-button"
-           href="#"
-           onclick="return showFavoriteHelp();">
-            ★ ДОБАВИТЬ СЕРВЕР В ИЗБРАННОЕ
-        </a>
-
-        <div id="favoriteHelp" class="favorite-help">
-            <strong>Как добавить сервер в избранное:</strong><br><br>
-            1. Откройте список серверов в Counter-Strike: Source.<br>
-            2. Перейдите во вкладку <strong>«Избранное»</strong>.<br>
-            3. Нажмите <strong>«Добавить сервер»</strong>.<br>
-            4. Введите адрес:<br><br>
-            <strong>194.93.2.218:27015</strong><br><br>
-            5. Нажмите «Добавить этот адрес в избранное».
-        </div>
-    </div>
-
-    <div class="footer">
-        Server Welcome Banner 6.0
+    <div class="info">
+        Для помощи используйте команды:<br><br>
+        <b>!favorite</b> — инструкция по добавлению сервера<br>
+        <b>!contacts</b> — контакты сервера<br>
+        <b>!banner</b> — открыть баннер повторно
     </div>
 
 </div>
