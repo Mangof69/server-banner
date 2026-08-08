@@ -3,449 +3,877 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Добро пожаловать на сервер</title>
 
 <style>
-*{box-sizing:border-box}
 
-html,body{
-    margin:0;
-    padding:0;
-    width:100%;
-    min-height:100%;
-    background:#080808;
-    color:#eee;
-    font-family:Arial,Helvetica,sans-serif;
+/* ============================================================
+   ОСНОВНЫЕ НАСТРОЙКИ
+   ============================================================ */
+
+* {
+    box-sizing: border-box;
 }
 
-body{
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+
+    background: #080808;
+    color: #eeeeee;
+
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.banner{
-    width:100%;
-    max-width:1100px;
-    margin:0 auto;
-    background:#111;
-    border:1px solid #292929;
-    box-shadow:0 0 30px rgba(0,0,0,.8);
-    overflow:hidden;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
-/* ЗАГОЛОВОК */
-.header{
-    min-height:62px;
-    display:flex;
-    align-items:center;
-    padding:0 24px;
-    background:#111;
-    border-bottom:2px solid #e5a900;
+
+/* ============================================================
+   ОСНОВНОЙ БАННЕР
+   ============================================================ */
+
+.banner {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    background: #111111;
+
+    border: 1px solid #292929;
+
+    box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.8);
+
+    overflow: hidden;
 }
 
-.header-icon{
-    font-size:29px;
-    margin-right:14px;
+
+/* ============================================================
+   ЗАГОЛОВОК
+   ============================================================ */
+
+.header {
+    min-height: 62px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 24px;
+
+    background: #111111;
+
+    border-bottom: 2px solid #e5a900;
 }
 
-.header-title{
-    color:#ffbd00;
-    font-size:23px;
-    font-weight:bold;
-    text-transform:uppercase;
+.header-icon {
+    margin-right: 14px;
+
+    font-size: 29px;
 }
 
-/* КАРТИНКА */
-.hero{
-    width:100%;
-    background:#000;
-    line-height:0;
+.header-title {
+    color: #ffbd00;
+
+    font-size: 23px;
+    font-weight: bold;
+
+    text-transform: uppercase;
 }
 
-.hero img{
-    display:block;
-    width:100%;
-    height:auto;
-    max-height:430px;
-    object-fit:cover;
+
+/* ============================================================
+   КАРТИНКА БАННЕРА
+   ============================================================ */
+
+.hero {
+    width: 100%;
+
+    background: #000000;
+
+    line-height: 0;
 }
 
-/* ИНФОРМАЦИЯ */
-.info{
-    display:grid;
-    grid-template-columns:1.25fr 1fr 1fr;
-    gap:26px;
-    padding:23px 28px;
-    background:#101010;
+.hero img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    max-height: 430px;
+
+    object-fit: cover;
 }
 
-.column h2{
-    margin:0 0 13px;
-    color:#ffbd00;
-    font-size:18px;
-    text-transform:uppercase;
+
+/* ============================================================
+   ТРИ КОЛОНКИ
+   ============================================================ */
+
+.info {
+    display: grid;
+
+    grid-template-columns:
+        1.25fr
+        1fr
+        1fr;
+
+    gap: 26px;
+
+    padding: 23px 28px;
+
+    background: #101010;
 }
 
-.rules{
-    margin:0;
-    padding-left:20px;
+
+/* ============================================================
+   ЗАГОЛОВКИ КОЛОНОК
+   ============================================================ */
+
+.column h2 {
+    margin: 0 0 13px;
+
+    color: #ffbd00;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    text-transform: uppercase;
 }
 
-.rules li{
-    margin-bottom:8px;
-    color:#ddd;
-    font-size:14px;
-    line-height:1.45;
+
+/* ============================================================
+   ПРАВИЛА
+   ============================================================ */
+
+.rules {
+    margin: 0;
+
+    padding-left: 20px;
 }
 
-.column p{
-    margin:7px 0;
-    color:#ddd;
-    font-size:14px;
-    line-height:1.5;
+.rules li {
+    margin-bottom: 8px;
+
+    color: #dddddd;
+
+    font-size: 14px;
+
+    line-height: 1.45;
 }
 
-/* IP */
-.server-ip{
-    margin-top:12px;
-    padding:10px 12px;
-    background:#181818;
-    border-left:3px solid #ffbd00;
-    color:#fff;
-    font-size:14px;
-    font-weight:bold;
-    word-break:break-all;
+
+/* ============================================================
+   ТЕКСТ
+   ============================================================ */
+
+.column p {
+    margin: 7px 0;
+
+    color: #dddddd;
+
+    font-size: 14px;
+
+    line-height: 1.5;
 }
 
-/* КОНТАКТЫ */
-.contact-item{
-    margin-bottom:20px;
+
+/* ============================================================
+   IP СЕРВЕРА
+   ============================================================ */
+
+.server-ip {
+    margin-top: 12px;
+
+    padding: 10px 12px;
+
+    background: #181818;
+
+    border-left: 3px solid #ffbd00;
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    word-break: break-all;
 }
 
-.contact-label{
-    margin-bottom:5px;
-    color:#ffbd00;
-    font-size:14px;
-    font-weight:bold;
+
+/* ============================================================
+   КОНТАКТЫ
+   ============================================================ */
+
+.contact-item {
+    margin-bottom: 20px;
 }
 
-.contact-name{
-    color:#eee;
-    font-size:15px;
-    line-height:1.45;
+.contact-label {
+    margin-bottom: 5px;
+
+    color: #ffbd00;
+
+    font-size: 14px;
+    font-weight: bold;
 }
 
-/* VK */
-.contact-vk{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    margin-top:10px;
-    min-width:76px;
-    height:34px;
-    padding:0 18px;
-    border:1px solid #4d9cff;
-    background:#171717;
-    color:#4d9cff;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:bold;
-    cursor:pointer;
+.contact-name {
+    color: #eeeeee;
+
+    font-size: 15px;
+
+    line-height: 1.45;
 }
 
-.contact-vk:hover{
-    background:#4d9cff;
-    color:#fff;
+
+/* ============================================================
+   КНОПКА VK
+   ============================================================ */
+
+.contact-vk {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 10px;
+
+    min-width: 76px;
+    height: 34px;
+
+    padding: 0 18px;
+
+    border: 1px solid #4d9cff;
+
+    background: #171717;
+
+    color: #4d9cff;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s,
+        color 0.15s;
 }
 
-/* НИЖНЯЯ КНОПКА */
-.buttons{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:16px 25px 22px;
-    background:#101010;
+.contact-vk:hover {
+    background: #4d9cff;
+
+    color: #ffffff;
 }
 
-.button{
-    display:inline-flex;
-    justify-content:center;
-    align-items:center;
-    min-width:280px;
-    height:46px;
-    padding:0 20px;
-    border:1px solid #d79f00;
-    background:#171717;
-    color:#ffbd00;
-    font-size:14px;
-    font-weight:bold;
-    cursor:pointer;
+
+/* ============================================================
+   НИЖНЯЯ КНОПКА
+   ============================================================ */
+
+.buttons {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 16px 25px 22px;
+
+    background: #101010;
 }
 
-.button:hover{
-    background:#ffbd00;
-    color:#111;
+.button {
+    display: inline-flex;
+
+    justify-content: center;
+    align-items: center;
+
+    min-width: 280px;
+    height: 46px;
+
+    padding: 0 20px;
+
+    border: 1px solid #d79f00;
+
+    background: #171717;
+
+    color: #ffbd00;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s,
+        color 0.15s;
 }
 
-/* ЗАКРЫТЬ */
-.close-button{
-    width:100%;
-    height:48px;
-    border:0;
-    border-top:1px solid #292929;
-    background:#151515;
-    color:#ffbd00;
-    font-size:15px;
-    font-weight:bold;
-    cursor:pointer;
+.button:hover {
+    background: #ffbd00;
+
+    color: #111111;
 }
 
-.close-button:hover{
-    background:#222;
+
+/* ============================================================
+   ОКНО ИЗБРАННОГО
+   ============================================================ */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.88);
+
+    z-index: 100;
 }
 
-/* ОКНО ИЗБРАННОГО */
-.modal{
-    position:fixed;
-    inset:0;
-    display:none;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
-    background:rgba(0,0,0,.88);
-    z-index:100;
+.modal.active {
+    display: flex;
 }
 
-.modal.active{
-    display:flex;
+.modal-box {
+    width: 100%;
+    max-width: 590px;
+
+    padding: 24px;
+
+    background: #111111;
+
+    border: 1px solid #e5a900;
+
+    box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.9);
 }
 
-.modal-box{
-    width:100%;
-    max-width:590px;
-    padding:24px;
-    background:#111;
-    border:1px solid #e5a900;
-    box-shadow:0 0 30px rgba(0,0,0,.9);
+.modal-box h2 {
+    margin: 0 0 18px;
+
+    color: #ffbd00;
+
+    font-size: 20px;
 }
 
-.modal-box h2{
-    margin:0 0 18px;
-    color:#ffbd00;
-    font-size:20px;
+.modal-box p {
+    color: #dddddd;
+
+    font-size: 14px;
+
+    line-height: 1.6;
 }
 
-.modal-box p{
-    color:#ddd;
-    font-size:14px;
-    line-height:1.6;
+
+/* ============================================================
+   IP В ОКНЕ ИЗБРАННОГО
+   ============================================================ */
+
+.server-address {
+    display: block;
+
+    margin: 17px 0;
+
+    padding: 13px;
+
+    background: #050505;
+
+    border: 1px solid #333333;
+
+    color: #ffbd00;
+
+    text-align: center;
+
+    font-size: 19px;
+    font-weight: bold;
 }
 
-.server-address{
-    display:block;
-    margin:17px 0;
-    padding:13px;
-    background:#050505;
-    border:1px solid #333;
-    color:#ffbd00;
-    text-align:center;
-    font-size:19px;
-    font-weight:bold;
+
+/* ============================================================
+   КНОПКА ЗАКРЫТИЯ ОКНА ИЗБРАННОГО
+   ============================================================ */
+
+.modal-close {
+    width: 100%;
+    height: 44px;
+
+    border: 1px solid #d79f00;
+
+    background: #171717;
+
+    color: #ffbd00;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s,
+        color 0.15s;
 }
 
-.modal-close{
-    width:100%;
-    height:44px;
-    border:1px solid #d79f00;
-    background:#171717;
-    color:#ffbd00;
-    font-weight:bold;
-    cursor:pointer;
+.modal-close:hover {
+    background: #ffbd00;
+
+    color: #111111;
 }
 
-.modal-close:hover{
-    background:#ffbd00;
-    color:#111;
-}
 
-@media(max-width:760px){
-    .header{
-        min-height:54px;
-        padding:0 15px;
+/* ============================================================
+   АДАПТАЦИЯ ДЛЯ НЕБОЛЬШОГО ЭКРАНА
+   ============================================================ */
+
+@media (max-width: 760px) {
+
+    .header {
+        min-height: 54px;
+
+        padding: 0 15px;
     }
 
-    .header-title{
-        font-size:18px;
+    .header-title {
+        font-size: 18px;
     }
 
-    .info{
-        grid-template-columns:1fr;
-        gap:17px;
-        padding:18px;
+    .info {
+        grid-template-columns: 1fr;
+
+        gap: 17px;
+
+        padding: 18px;
     }
 
-    .buttons{
-        padding-left:18px;
-        padding-right:18px;
+    .buttons {
+        padding-left: 18px;
+        padding-right: 18px;
     }
 
-    .button{
-        width:100%;
-        min-width:0;
+    .button {
+        width: 100%;
+
+        min-width: 0;
     }
 }
+
 </style>
 </head>
 
+
 <body>
+
+
+<!-- ==========================================================
+     ОСНОВНОЙ БАННЕР
+     ========================================================== -->
 
 <div class="banner">
 
+
+    <!-- ======================================================
+         ЗАГОЛОВОК
+         ====================================================== -->
+
     <div class="header">
-        <div class="header-icon">⚡</div>
-        <div class="header-title">ДОБРО ПОЖАЛОВАТЬ НА СЕРВЕР</div>
+
+        <div class="header-icon">
+            ⚡
+        </div>
+
+        <div class="header-title">
+            ДОБРО ПОЖАЛОВАТЬ НА СЕРВЕР
+        </div>
+
     </div>
 
+
+    <!-- ======================================================
+         КАРТИНКА
+         ====================================================== -->
+
     <div class="hero">
-        <img src="banner.jpg" alt="Баннер сервера">
+
+        <img
+            src="banner.jpg"
+            alt="Баннер сервера"
+        >
+
     </div>
+
+
+    <!-- ======================================================
+         ИНФОРМАЦИЯ
+         ====================================================== -->
 
     <div class="info">
 
-        <!-- ПРАВИЛА -->
+
+        <!-- ==================================================
+             ПРАВИЛА
+             ================================================== -->
+
         <div class="column">
-            <h2>Основные правила</h2>
+
+            <h2>
+                Основные правила
+            </h2>
 
             <ol class="rules">
-                <li>Запрещена распрыжка и банни-хоп!</li>
-                <li>Запрещено оскорблять игроков и админов!</li>
-                <li>Запрещены некорректные ники и клантеги!</li>
-                <li>Запрещена любая реклама!</li>
-                <li>Запрещено брать AWP когда Б закрыто!</li>
+
+                <li>
+                    Запрещена распрыжка и банни-хоп!
+                </li>
+
+                <li>
+                    Запрещено оскорблять игроков и админов!
+                </li>
+
+                <li>
+                    Запрещены некорректные ники и клантеги!
+                </li>
+
+                <li>
+                    Запрещена любая реклама!
+                </li>
+
+                <li>
+                    Запрещено брать AWP когда Б закрыто!
+                </li>
+
             </ol>
+
         </div>
 
-        <!-- ИНФОРМАЦИЯ -->
-        <div class="column">
-            <h2>Информация</h2>
 
-            <p>Играйте честно и уважайте других игроков.</p>
-            <p>При проблемах обращайтесь к администрации.</p>
-            <p>Желаем приятной игры!</p>
+        <!-- ==================================================
+             ИНФОРМАЦИЯ
+             ================================================== -->
+
+        <div class="column">
+
+            <h2>
+                Информация
+            </h2>
+
+            <p>
+                Играйте честно и уважайте других игроков.
+            </p>
+
+            <p>
+                При проблемах обращайтесь к администрации.
+            </p>
+
+            <p>
+                Желаем приятной игры!
+            </p>
+
 
             <div class="server-ip">
+
                 IP:
-                <span id="serverIP">194.93.22.218:27015</span>
+                <span id="serverIP">
+                    194.93.2.218:27015
+                </span>
+
             </div>
+
         </div>
 
-        <!-- КОНТАКТЫ -->
+
+        <!-- ==================================================
+             КОНТАКТЫ
+             ================================================== -->
+
         <div class="column">
-            <h2>Контакты</h2>
+
+            <h2>
+                Контакты
+            </h2>
+
+
+            <!-- ГЛАВНЫЙ СОЗДАТЕЛЬ -->
 
             <div class="contact-item">
-                <div class="contact-label">Гл. Создатель:</div>
-                <div class="contact-name">•★DangA★• [90]</div>
+
+                <div class="contact-label">
+                    Гл. Создатель:
+                </div>
+
+                <div class="contact-name">
+                    •★DangA★• [90]
+                </div>
+
             </div>
 
+
+            <!-- VIP -->
+
             <div class="contact-item">
-                <div class="contact-label">Покупка VIP обращаться:</div>
-                <div class="contact-name">•★Santa Lucia★• [87]</div>
+
+                <div class="contact-label">
+                    Покупка VIP обращаться:
+                </div>
+
+                <div class="contact-name">
+                    •★Santa Lucia★• [87]
+                </div>
+
+
+                <!-- VK -->
 
                 <a
                     class="contact-vk"
                     href="https://vk.ru/santalucia"
                     target="_blank"
-                >VK</a>
+                    rel="noopener noreferrer"
+                >
+                    VK
+                </a>
+
             </div>
+
         </div>
 
     </div>
+
+
+    <!-- ======================================================
+         КНОПКА ИЗБРАННОГО
+         ====================================================== -->
 
     <div class="buttons">
-        <button class="button" onclick="showFavorite()">
-            ⭐ ДОБАВИТЬ СЕРВЕР В ИЗБРАННОЕ
+
+        <button
+            class="button"
+            onclick="showFavorite()"
+        >
+            ⭐ ДОБАВИТЬ В ИЗБРАННОЕ
         </button>
+
     </div>
 
-    <button class="close-button" onclick="closeBanner()">
-        ПОНЯТНО
-    </button>
 
 </div>
 
-<!-- ОКНО ИНСТРУКЦИИ -->
-<div class="modal" id="favoriteModal">
+
+<!-- ==========================================================
+     ОКНО ИНСТРУКЦИИ ИЗБРАННОГО
+     ========================================================== -->
+
+<div
+    class="modal"
+    id="favoriteModal"
+>
+
+
     <div class="modal-box">
 
-        <h2>⭐ ДОБАВИТЬ СЕРВЕР В ИЗБРАННОЕ</h2>
+
+        <h2>
+            ⭐ ДОБАВИТЬ СЕРВЕР В ИЗБРАННОЕ
+        </h2>
+
 
         <p>
-            Автоматически изменить список избранных серверов Steam
-            из HTML нельзя.
+            Добавить сервер в избранное можно через
+            браузер серверов CS:S.
         </p>
+
 
         <p>
-            Сделайте это через серверный браузер CS:S:
+
+            <b>1.</b>
+            Откройте «Найти серверы».<br>
+
+            <b>2.</b>
+            Перейдите во вкладку
+            <b>«Избранное»</b>.<br>
+
+            <b>3.</b>
+            Нажмите
+            <b>«Добавить сервер»</b>.<br>
+
+            <b>4.</b>
+            Введите адрес нашего сервера.
+
         </p>
 
-        <p>
-            <b>1.</b> Откройте «Найти серверы».<br>
-            <b>2.</b> Перейдите во вкладку «Избранное».<br>
-            <b>3.</b> Нажмите «Добавить сервер».<br>
-            <b>4.</b> Введите адрес нашего сервера.
-        </p>
 
-        <div class="server-address" id="favoriteIP">
-            194.93.22.218:27015
+        <!-- IP -->
+
+        <div
+            class="server-address"
+            id="favoriteIP"
+        >
+            194.93.2.218:27015
         </div>
 
-        <button class="modal-close" onclick="hideFavorite()">
-            ПОНЯТНО
+
+        <!-- ЗАКРЫТЬ ОКНО ИЗБРАННОГО -->
+
+        <button
+            class="modal-close"
+            onclick="hideFavorite()"
+        >
+            ЗАКРЫТЬ
         </button>
 
+
     </div>
+
 </div>
 
+
+<!-- ==========================================================
+     JAVASCRIPT
+     ========================================================== -->
+
 <script>
+
+/*
+ * Получение параметра из URL.
+ *
+ * Например:
+ *
+ * ?ip=194.93.2.218&port=27015
+ */
+
 function getParameter(name) {
-    const params = new URLSearchParams(window.location.search);
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
     return params.get(name);
 }
 
+
+/*
+ * Обновление IP.
+ *
+ * Если SourceMod передаст IP и порт
+ * через URL, они будут показаны автоматически.
+ */
+
 function updateServerIP() {
-    const ip = getParameter("ip");
-    const port = getParameter("port");
+
+    const ip =
+        getParameter("ip");
+
+    const port =
+        getParameter("port");
+
 
     if (!ip || !port) {
         return;
     }
 
-    const address = ip + ":" + port;
 
-    document.getElementById("serverIP").textContent = address;
-    document.getElementById("favoriteIP").textContent = address;
+    const address =
+        ip + ":" + port;
+
+
+    const serverIP =
+        document.getElementById(
+            "serverIP"
+        );
+
+
+    const favoriteIP =
+        document.getElementById(
+            "favoriteIP"
+        );
+
+
+    if (serverIP) {
+
+        serverIP.textContent =
+            address;
+
+    }
+
+
+    if (favoriteIP) {
+
+        favoriteIP.textContent =
+            address;
+
+    }
+
 }
+
+
+/*
+ * Открыть окно избранного.
+ */
 
 function showFavorite() {
-    document.getElementById("favoriteModal").classList.add("active");
+
+    const modal =
+        document.getElementById(
+            "favoriteModal"
+        );
+
+
+    if (modal) {
+
+        modal.classList.add(
+            "active"
+        );
+
+    }
+
 }
+
+
+/*
+ * Закрыть окно избранного.
+ */
 
 function hideFavorite() {
-    document.getElementById("favoriteModal").classList.remove("active");
+
+    const modal =
+        document.getElementById(
+            "favoriteModal"
+        );
+
+
+    if (modal) {
+
+        modal.classList.remove(
+            "active"
+        );
+
+    }
+
 }
 
-function closeBanner() {
-    try {
-        window.close();
-    } catch (e) {
-        // Закрытие контролируется клиентом CS:S.
-    }
-}
+
+/*
+ * Запускаем обновление IP.
+ */
 
 updateServerIP();
+
 </script>
+
 
 </body>
 </html>
