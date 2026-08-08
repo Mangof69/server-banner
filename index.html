@@ -2,12 +2,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Добро пожаловать на сервер</title>
-
+<title>Server Welcome Banner</title>
 <style type="text/css">
 html, body {
     margin: 0;
     padding: 0;
+    width: 100%;
     background: #080808;
     color: #eeeeee;
     font-family: Arial, Helvetica, sans-serif;
@@ -15,21 +15,19 @@ html, body {
 }
 
 body {
-    width: 100%;
+    overflow-x: hidden;
 }
 
 .banner {
-    width: 96%;
-    max-width: 1100px;
-    margin: 10px auto;
-    background: #111111;
-    border: 1px solid #292929;
+    width: 100%;
+    margin: 0;
+    background: #101010;
 }
 
 .header {
     height: 58px;
     line-height: 58px;
-    padding-left: 20px;
+    padding-left: 18px;
     background: #111111;
     border-bottom: 2px solid #e5a900;
     color: #ffbd00;
@@ -38,49 +36,47 @@ body {
 }
 
 .header .icon {
-    font-size: 25px;
-    margin-right: 10px;
+    margin-right: 9px;
+    font-size: 24px;
 }
 
 .hero {
     display: block;
     width: 100%;
     height: auto;
-    max-height: 420px;
     border: 0;
 }
 
 .content {
     width: 100%;
     background: #101010;
+    overflow: hidden;
 }
 
 .column {
-    display: inline-block;
-    vertical-align: top;
-    width: 29%;
-    min-height: 230px;
-    margin: 20px 1.5%;
+    float: left;
+    width: 30%;
+    margin: 20px 1.65%;
+    min-height: 220px;
 }
 
-.column:first-child {
-    width: 32%;
+.column.rules {
+    width: 31%;
 }
 
 .column h2 {
-    margin: 0 0 14px 0;
+    margin: 0 0 13px 0;
     padding-bottom: 8px;
     border-bottom: 1px solid #333333;
     color: #ffbd00;
-    font-size: 18px;
-    text-transform: uppercase;
+    font-size: 17px;
 }
 
 .column p,
 .column li {
     color: #dddddd;
     font-size: 14px;
-    line-height: 1.55;
+    line-height: 1.5;
 }
 
 .column ol {
@@ -93,9 +89,8 @@ body {
 }
 
 .server-ip {
-    display: inline-block;
-    margin-top: 8px;
-    padding: 10px 12px;
+    margin-top: 12px;
+    padding: 10px;
     background: #181818;
     border-left: 3px solid #ffbd00;
     color: #ffffff;
@@ -109,8 +104,8 @@ body {
 
 .vk-button {
     display: inline-block;
-    margin-top: 4px;
-    padding: 8px 25px;
+    margin-top: 2px;
+    padding: 8px 24px;
     border: 1px solid #4d9cff;
     background: #171717;
     color: #4d9cff;
@@ -118,21 +113,16 @@ body {
     font-weight: bold;
 }
 
-.vk-button:hover {
-    background: #4d9cff;
-    color: #ffffff;
-}
-
-.favorite-wrap {
+.favorite-area {
     clear: both;
+    padding: 5px 18px 20px 18px;
     text-align: center;
-    padding: 5px 20px 20px 20px;
     background: #101010;
 }
 
 .favorite-button {
     display: inline-block;
-    padding: 11px 24px;
+    padding: 11px 22px;
     border: 1px solid #e5a900;
     background: #171717;
     color: #ffbd00;
@@ -140,39 +130,44 @@ body {
     font-weight: bold;
 }
 
-.favorite-button:hover {
-    background: #ffbd00;
-    color: #111111;
+.favorite-button:hover,
+.vk-button:hover {
+    background: #252525;
+}
+
+.favorite-help {
+    display: none;
+    max-width: 720px;
+    margin: 15px auto 0 auto;
+    padding: 14px;
+    text-align: left;
+    background: #181818;
+    border: 1px solid #333333;
+    color: #dddddd;
+    line-height: 1.55;
+}
+
+.favorite-help strong {
+    color: #ffbd00;
 }
 
 .footer {
-    text-align: center;
-    background: #101010;
+    clear: both;
+    padding: 12px;
     border-top: 1px solid #292929;
-    padding: 14px;
+    background: #0d0d0d;
+    text-align: center;
+    color: #777777;
+    font-size: 12px;
 }
 
-.ok-button {
-    padding: 10px 45px;
-    border: 1px solid #e5a900;
-    background: #171717;
-    color: #ffbd00;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.ok-button:hover {
-    background: #ffbd00;
-    color: #111111;
-}
-
-/* Чтобы старый браузер CS:S не ломал страницу */
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 760px) {
     .column,
-    .column:first-child {
-        display: block;
-        width: 90%;
-        margin: 20px auto;
+    .column.rules {
+        float: none;
+        width: 92%;
+        margin: 18px auto;
+        min-height: 0;
     }
 
     .header {
@@ -180,6 +175,20 @@ body {
     }
 }
 </style>
+
+<script type="text/javascript">
+function showFavoriteHelp() {
+    var box = document.getElementById('favoriteHelp');
+
+    if (box.style.display == 'block') {
+        box.style.display = 'none';
+    } else {
+        box.style.display = 'block';
+    }
+
+    return false;
+}
+</script>
 </head>
 
 <body>
@@ -191,14 +200,12 @@ body {
         <span>ДОБРО ПОЖАЛОВАТЬ НА СЕРВЕР</span>
     </div>
 
-    <!-- banner.jpg должен лежать рядом с index.html -->
     <img class="hero" src="banner.jpg" alt="Баннер сервера">
 
     <div class="content">
 
-        <div class="column">
+        <div class="column rules">
             <h2>ОСНОВНЫЕ ПРАВИЛА</h2>
-
             <ol>
                 <li>Запрещена распрыжка и банни-хоп!</li>
                 <li>Запрещено оскорблять игроков и админов!</li>
@@ -210,7 +217,6 @@ body {
 
         <div class="column">
             <h2>ИНФОРМАЦИЯ</h2>
-
             <p>Играйте честно и уважайте других игроков.</p>
             <p>При проблемах обращайтесь к администрации.</p>
             <p>Желаем приятной игры!</p>
@@ -242,17 +248,26 @@ body {
 
     </div>
 
-    <div class="favorite-wrap">
+    <div class="favorite-area">
         <a class="favorite-button"
-           href="steam://connect/194.93.2.218:27015">
+           href="#"
+           onclick="return showFavoriteHelp();">
             ★ ДОБАВИТЬ СЕРВЕР В ИЗБРАННОЕ
         </a>
+
+        <div id="favoriteHelp" class="favorite-help">
+            <strong>Как добавить сервер в избранное:</strong><br><br>
+            1. Откройте список серверов в Counter-Strike: Source.<br>
+            2. Перейдите во вкладку <strong>«Избранное»</strong>.<br>
+            3. Нажмите <strong>«Добавить сервер»</strong>.<br>
+            4. Введите адрес:<br><br>
+            <strong>194.93.2.218:27015</strong><br><br>
+            5. Нажмите «Добавить этот адрес в избранное».
+        </div>
     </div>
 
     <div class="footer">
-        <button class="ok-button" onclick="window.close();">
-            ПОНЯТНО
-        </button>
+        Server Welcome Banner 6.0
     </div>
 
 </div>
