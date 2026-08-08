@@ -1,1209 +1,634 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-<meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+    <meta charset="UTF-8">
 
-<title>Server Banner</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<style>
+    <title>Server Banner</title>
 
-/* ============================================================
-   ОСНОВА
-   ============================================================ */
+    <style>
 
-* {
-    box-sizing: border-box;
-}
+        /* ==================================================
+           ЗАПРЕТ ВЫДЕЛЕНИЯ
+           ================================================== */
 
-html,
-body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100%;
+        html,
+        body,
+        * {
+            -webkit-user-select: none !important;
+            user-select: none !important;
 
-    background: #080808;
-    color: #eeeeee;
+            -webkit-touch-callout: none !important;
+        }
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-}
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+        /* ==================================================
+           ЗАПРЕТ ПЕРЕТАСКИВАНИЯ
+           ================================================== */
 
-    user-select: text;
-}
+        img,
+        a,
+        button {
+            -webkit-user-drag: none !important;
+            user-drag: none !important;
+        }
 
+    </style>
 
-/* ============================================================
-   БАННЕР
-   ============================================================ */
-
-.banner {
-    width: 100%;
-    max-width: 1100px;
-
-    margin: 0 auto;
-
-    background: #111111;
-
-    border: 1px solid #292929;
-
-    box-shadow:
-        0 0 30px rgba(0, 0, 0, 0.8);
-
-    overflow: hidden;
-}
-
-
-/* ============================================================
-   КАРТИНКА
-   ============================================================ */
-
-.hero {
-    width: 100%;
-
-    background: #000000;
-
-    line-height: 0;
-}
-
-.hero img {
-    display: block;
-
-    width: 100%;
-    height: auto;
-
-    max-height: 430px;
-
-    object-fit: cover;
-
-    border: 0;
-
-    user-select: none;
-
-    -webkit-user-select: none;
-
-    -webkit-user-drag: none;
-}
-
-
-/* ============================================================
-   ИНФОРМАЦИЯ
-   ============================================================ */
-
-.info {
-    display: grid;
-
-    grid-template-columns:
-        1.25fr
-        1fr
-        1fr;
-
-    gap: 26px;
-
-    padding: 23px 28px;
-
-    background: #101010;
-}
-
-.column h2 {
-    margin: 0 0 13px;
-
-    color: #ffbd00;
-
-    font-size: 18px;
-
-    text-transform: uppercase;
-}
-
-.column p {
-    margin: 7px 0;
-
-    color: #dddddd;
-
-    font-size: 14px;
-
-    line-height: 1.5;
-}
-
-
-/* ============================================================
-   ПРАВИЛА
-   ============================================================ */
-
-.rules {
-    margin: 0;
-
-    padding-left: 20px;
-}
-
-.rules li {
-    margin-bottom: 8px;
-
-    color: #dddddd;
-
-    font-size: 14px;
-
-    line-height: 1.45;
-}
-
-
-/* ============================================================
-   IP СЕРВЕРА
-   ============================================================ */
-
-.server-ip {
-    display: block;
-
-    margin-top: 14px;
-
-    padding: 10px 12px;
-
-    background: #181818;
-
-    border-left: 3px solid #ffbd00;
-
-    color: #ffffff;
-
-    font-size: 14px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    user-select: text;
-}
-
-.server-ip:hover {
-    background: #202020;
-}
-
-#serverIPText {
-    color: #ffbd00;
-
-    user-select: text;
-}
-
-
-/* ============================================================
-   СТАТУС КОПИРОВАНИЯ
-   ============================================================ */
-
-.copy-status {
-    min-height: 18px;
-
-    margin-top: 6px;
-
-    color: #ffbd00;
-
-    font-size: 12px;
-
-    font-weight: bold;
-}
-
-
-/* ============================================================
-   КОНТАКТЫ
-   ============================================================ */
-
-.contact-item {
-    margin-bottom: 20px;
-}
-
-.contact-label {
-    margin-bottom: 5px;
-
-    color: #ffbd00;
-
-    font-size: 14px;
-
-    font-weight: bold;
-}
-
-.contact-name {
-    color: #eeeeee;
-
-    font-size: 15px;
-
-    line-height: 1.45;
-}
-
-
-/* ============================================================
-   VK
-   ============================================================ */
-
-.contact-vk {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    margin-top: 10px;
-
-    min-width: 76px;
-    height: 34px;
-
-    padding: 0 18px;
-
-    border: 1px solid #4d9cff;
-
-    background: #171717;
-
-    color: #4d9cff;
-
-    text-decoration: none;
-
-    font-size: 14px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-.contact-vk:hover {
-    background: #4d9cff;
-
-    color: #ffffff;
-}
-
-
-/* ============================================================
-   КНОПКИ
-   ============================================================ */
-
-.buttons {
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    gap: 12px;
-
-    padding: 16px 25px 22px;
-
-    background: #101010;
-}
-
-.button {
-    display: inline-flex;
-
-    justify-content: center;
-    align-items: center;
-
-    min-width: 280px;
-
-    height: 46px;
-
-    padding: 0 20px;
-
-    border: 1px solid #d79f00;
-
-    background: #171717;
-
-    color: #ffbd00;
-
-    font-size: 14px;
-
-    font-weight: bold;
-
-    text-decoration: none;
-
-    cursor: pointer;
-}
-
-.button:hover {
-    background: #ffbd00;
-
-    color: #111111;
-}
-
-
-/* ============================================================
-   МОДАЛЬНОЕ ОКНО
-   ============================================================ */
-
-.modal {
-    position: fixed;
-
-    inset: 0;
-
-    display: none;
-
-    justify-content: center;
-    align-items: center;
-
-    padding: 20px;
-
-    background:
-        rgba(0, 0, 0, 0.88);
-
-    z-index: 100;
-}
-
-.modal.active {
-    display: flex;
-}
-
-.modal-box {
-    width: 100%;
-
-    max-width: 590px;
-
-    padding: 24px;
-
-    background: #111111;
-
-    border: 1px solid #e5a900;
-
-    box-shadow:
-        0 0 30px rgba(0, 0, 0, 0.9);
-}
-
-.modal-box h2 {
-    margin: 0 0 18px;
-
-    color: #ffbd00;
-
-    font-size: 20px;
-}
-
-.modal-box p {
-    color: #dddddd;
-
-    font-size: 14px;
-
-    line-height: 1.6;
-}
-
-
-/* ============================================================
-   АДРЕС СЕРВЕРА
-   ============================================================ */
-
-.server-address {
-    display: block;
-
-    margin: 17px 0;
-
-    padding: 13px;
-
-    background: #050505;
-
-    border: 1px solid #333333;
-
-    color: #ffbd00;
-
-    text-align: center;
-
-    font-size: 19px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    user-select: text;
-}
-
-.server-address:hover {
-    background: #101010;
-}
-
-
-/* ============================================================
-   КНОПКА ЗАКРЫТИЯ
-   ============================================================ */
-
-.modal-close {
-    width: 100%;
-
-    height: 44px;
-
-    border: 1px solid #d79f00;
-
-    background: #171717;
-
-    color: #ffbd00;
-
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-.modal-close:hover {
-    background: #ffbd00;
-
-    color: #111111;
-}
-
-
-/* ============================================================
-   МОБИЛЬНЫЙ ВИД
-   ============================================================ */
-
-@media (max-width: 760px) {
-
-    .info {
-        grid-template-columns: 1fr;
-
-        gap: 17px;
-
-        padding: 18px;
-    }
-
-    .buttons {
-        flex-direction: column;
-
-        padding-left: 18px;
-        padding-right: 18px;
-    }
-
-    .button {
-        width: 100%;
-
-        min-width: 0;
-    }
-}
-
-</style>
 </head>
 
 
 <body>
 
+<script>
 
-<div class="banner">
+/* ======================================================
+   ГЛОБАЛЬНАЯ БЛОКИРОВКА ПРАВОЙ КНОПКИ
+   ====================================================== */
 
+(function () {
 
-    <!-- ======================================================
-         БАННЕР
-         ====================================================== -->
+    function blockRightMouse(event) {
 
-    <div class="hero">
+        if (
+            event.button === 2 ||
+            event.which === 3
+        ) {
 
-        <img
-            src="banner.jpg"
-            alt="Баннер сервера"
-            draggable="false"
-            oncontextmenu="return false;"
-        >
+            event.preventDefault();
 
-    </div>
+            event.stopPropagation();
 
+            if (event.stopImmediatePropagation) {
+                event.stopImmediatePropagation();
+            }
 
-    <!-- ======================================================
-         ИНФОРМАЦИЯ
-         ====================================================== -->
+            return false;
+        }
 
-    <div class="info">
+    }
 
 
-        <!-- ==================================================
-             ПРАВИЛА
-             ================================================== -->
+    /* Контекстное меню */
 
-        <div class="column">
+    document.addEventListener(
+        "contextmenu",
+        function (event) {
 
-            <h2>
-                Основные правила
-            </h2>
+            event.preventDefault();
 
-            <ol class="rules">
+            event.stopPropagation();
 
-                <li>
-                    Запрещена распрыжка и банни-хоп!
-                </li>
+            if (event.stopImmediatePropagation) {
+                event.stopImmediatePropagation();
+            }
 
-                <li>
-                    Запрещено оскорблять игроков и админов!
-                </li>
+            return false;
 
-                <li>
-                    Запрещены некорректные ники и клан-теги!
-                </li>
+        },
+        true
+    );
 
-                <li>
-                    Запрещена любая реклама!
-                </li>
 
-                <li>
-                    Запрещено брать AWP когда Б закрыто!
-                </li>
+    /* Нажатие мыши */
 
-            </ol>
+    document.addEventListener(
+        "mousedown",
+        blockRightMouse,
+        true
+    );
 
-        </div>
 
+    /* Отпускание мыши */
 
-        <!-- ==================================================
-             ИНФОРМАЦИЯ
-             ================================================== -->
+    document.addEventListener(
+        "mouseup",
+        blockRightMouse,
+        true
+    );
 
-        <div class="column">
 
-            <h2>
-                Информация
-            </h2>
+    /* Дополнительное событие */
 
-            <p>
-                Играйте честно и уважайте других игроков.
-            </p>
+    document.addEventListener(
+        "auxclick",
+        blockRightMouse,
+        true
+    );
 
-            <p>
-                При проблемах обращайтесь к администрации.
-            </p>
 
-            <p>
-                Желаем приятной игры!
-            </p>
+    /* Старый WebKit */
 
+    document.oncontextmenu = function () {
+        return false;
+    };
 
-            <!-- IP -->
 
-            <div
-                class="server-ip"
-                id="serverIP"
-                onclick="copyServerIP();"
-                oncontextmenu="return false;"
-                onmousedown="blockRightMouse(event);"
-                title="Нажмите ЛКМ, чтобы скопировать IP"
-            >
+    document.onmousedown = blockRightMouse;
 
-                IP:
+    document.onmouseup = blockRightMouse;
 
-                <span id="serverIPText">
-                    194.93.2.218:27015
-                </span>
 
-            </div>
+    /* ==================================================
+       ЗАПРЕТ DRAG
+       ================================================== */
 
+    document.addEventListener(
+        "dragstart",
+        function (event) {
 
-            <div
-                class="copy-status"
-                id="copyStatus"
-            ></div>
+            event.preventDefault();
 
-        </div>
+            return false;
 
+        },
+        true
+    );
 
-        <!-- ==================================================
-             КОНТАКТЫ
-             ================================================== -->
 
-        <div class="column">
+    /* ==================================================
+       ЗАПРЕТ ВЫДЕЛЕНИЯ
+       ================================================== */
 
-            <h2>
-                Контакты
-            </h2>
+    document.addEventListener(
+        "selectstart",
+        function (event) {
 
+            event.preventDefault();
 
-            <div class="contact-item">
+            return false;
 
-                <div class="contact-label">
-                    Гл. Создатель:
-                </div>
+        },
+        true
+    );
 
-                <div class="contact-name">
-                    •★DangA★• [90]
-                </div>
 
-            </div>
+    /* ==================================================
+       ФУНКЦИЯ ДЛЯ IP
+       ================================================== */
 
+    window.blockRightMouse = blockRightMouse;
 
-            <div class="contact-item">
+})();
 
-                <div class="contact-label">
-                    Покупка VIP обращаться:
-                </div>
+</script>
 
-                <div class="contact-name">
-                    •★Santa Lucia★• [87]
-                </div>
 
+<!-- ======================================================
+     БАННЕР
+     ====================================================== -->
 
-                <a
-                    class="contact-vk"
-                    href="https://vk.ru/santalucia"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    oncontextmenu="return false;"
-                >
-                    VK
-                </a>
+<div class="hero">
 
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- ======================================================
-         КНОПКИ
-         ====================================================== -->
-
-    <div class="buttons">
-
-
-        <!-- VK -->
-
-        <a
-            class="button vk"
-            href="https://vk.ru/denok18"
-            target="_blank"
-            rel="noopener noreferrer"
-            oncontextmenu="return false;"
-        >
-            🔵 VK
-        </a>
-
-
-        <!-- ИЗБРАННОЕ -->
-
-        <button
-            class="button"
-            type="button"
-            onclick="showFavorite();"
-            oncontextmenu="return false;"
-        >
-            ⭐ ДОБАВИТЬ В ИЗБРАННОЕ
-        </button>
-
-    </div>
-
+    <img
+        src="banner.jpg"
+        alt="Баннер сервера"
+        draggable="false"
+        oncontextmenu="return false;"
+    >
 
 </div>
 
 
-<!-- ==========================================================
-     ОКНО ИЗБРАННОГО
-     ========================================================== -->
+<!-- ======================================================
+     ИНФОРМАЦИЯ
+     ====================================================== -->
 
-<div
-    class="modal"
-    id="favoriteModal"
-    oncontextmenu="return false;"
->
+<div class="info">
 
-    <div class="modal-box">
 
+    <!-- ==================================================
+         ПРАВИЛА
+         ================================================== -->
+
+    <div class="column">
 
         <h2>
-            ⭐ ДОБАВИТЬ СЕРВЕР В ИЗБРАННОЕ
+            Основные правила
         </h2>
 
+        <ol class="rules">
+
+            <li>
+                Запрещена распрыжка и банни-хоп!
+            </li>
+
+            <li>
+                Запрещено оскорблять игроков и админов!
+            </li>
+
+            <li>
+                Запрещены некорректные ники и клан-теги!
+            </li>
+
+            <li>
+                Запрещена любая реклама!
+            </li>
+
+            <li>
+                Запрещено брать AWP когда Б закрыто!
+            </li>
+
+        </ol>
+
+    </div>
+
+
+    <!-- ==================================================
+         ИНФОРМАЦИЯ
+         ================================================== -->
+
+    <div class="column">
+
+        <h2>
+            Информация
+        </h2>
 
         <p>
+            Играйте честно и уважайте других игроков.
+        </p>
 
-            <b>1.</b>
-            Откройте «Найти серверы».<br>
+        <p>
+            При проблемах обращайтесь к администрации.
+        </p>
 
-            <b>2.</b>
-            Перейдите во вкладку
-            <b>«История»</b>.<br>
-
-            <b>3.</b>
-            Найдите наш сервер.<br>
-
-            <b>4.</b>
-            Кликните по серверу правой кнопкой мыши.<br>
-
-            <b>5.</b>
-            Выберите
-            <b>«Добавить сервер в избранное»</b>.<br>
-
-            <b>6.</b>
-            После этого сервер появится во вкладке
-            <b>«Избранное»</b>.
-
+        <p>
+            Желаем приятной игры!
         </p>
 
 
-        <!-- IP В ОКНЕ -->
+        <!-- IP -->
 
         <div
-            class="server-address"
-            id="favoriteIP"
-            onclick="copyFavoriteIP();"
+            class="server-ip"
+            id="serverIP"
+            onclick="copyServerIP();"
             oncontextmenu="return false;"
             onmousedown="blockRightMouse(event);"
             title="Нажмите ЛКМ, чтобы скопировать IP"
         >
-            194.93.2.218:27015
+
+            IP:
+
+            <span id="serverIPText">
+                194.93.2.218:27015
+            </span>
+
         </div>
 
 
         <div
             class="copy-status"
-            id="favoriteCopyStatus"
+            id="copyStatus"
         ></div>
 
+    </div>
 
-        <!-- ЗАКРЫТЬ -->
 
-        <button
-            class="modal-close"
-            type="button"
-            onclick="hideFavorite();"
-            oncontextmenu="return false;"
-        >
-            ЗАКРЫТЬ
-        </button>
+    <!-- ==================================================
+         КОНТАКТЫ
+         ================================================== -->
+
+    <div class="column">
+
+        <h2>
+            Контакты
+        </h2>
+
+
+        <div class="contact-item">
+
+            <div class="contact-label">
+                Гл. Создатель:
+            </div>
+
+            <div class="contact-name">
+                •★DangA★• [90]
+            </div>
+
+        </div>
+
+
+        <div class="contact-item">
+
+            <div class="contact-label">
+                Покупка VIP обращаться:
+            </div>
+
+            <div class="contact-name">
+                •★Santa Lucia★• [87]
+            </div>
+
+
+            <a
+                class="contact-vk"
+                href="https://vk.ru/santalucia"
+                target="_blank"
+                rel="noopener noreferrer"
+                oncontextmenu="return false;"
+            >
+                VK
+            </a>
+
+        </div>
 
     </div>
 
 </div>
 
 
-<!-- ==========================================================
-     JAVASCRIPT
-     ========================================================== -->
+<!-- ======================================================
+     КНОПКИ
+     ====================================================== -->
+
+<div class="buttons">
+
+
+    <!-- VK -->
+
+    <a
+        class="button vk"
+        href="https://vk.ru/denok18"
+        target="_blank"
+        rel="noopener noreferrer"
+        oncontextmenu="return false;"
+    >
+        🔵 VK
+    </a>
+
+
+    <!-- ИЗБРАННОЕ -->
+
+    <button
+        class="button"
+        type="button"
+        onclick="showFavorite();"
+        oncontextmenu="return false;"
+    >
+        ⭐ ДОБАВИТЬ В ИЗБРАННОЕ
+    </button>
+
+</div>
+
+
+<!-- ======================================================
+     ОКНО "ДОБАВИТЬ В ИЗБРАННОЕ"
+     ====================================================== -->
+
+<div class="modal-box">
+
+
+    <h2>
+        ⭐ ДОБАВИТЬ СЕРВЕР В ИЗБРАННОЕ
+    </h2>
+
+
+    <p>
+
+        <b>1.</b>
+        Откройте «Найти серверы».<br>
+
+        <b>2.</b>
+        Перейдите во вкладку
+        <b>«История»</b>.<br>
+
+        <b>3.</b>
+        Найдите наш сервер.<br>
+
+        <b>4.</b>
+        Кликните по серверу правой кнопкой мыши.<br>
+
+        <b>5.</b>
+        Выберите
+        <b>«Добавить сервер в избранное»</b>.<br>
+
+        <b>6.</b>
+        После этого сервер появится во вкладке
+        <b>«Избранное»</b>.
+
+    </p>
+
+
+    <!-- IP В ОКНЕ -->
+
+    <div
+        class="server-address"
+        id="favoriteIP"
+        onclick="copyFavoriteIP();"
+        oncontextmenu="return false;"
+        onmousedown="blockRightMouse(event);"
+        title="Нажмите ЛКМ, чтобы скопировать IP"
+    >
+
+        194.93.2.218:27015
+
+    </div>
+
+
+    <div
+        class="copy-status"
+        id="favoriteCopyStatus"
+    ></div>
+
+
+    <!-- ЗАКРЫТЬ -->
+
+    <button
+        class="modal-close"
+        type="button"
+        onclick="hideFavorite();"
+        oncontextmenu="return false;"
+    >
+
+        ЗАКРЫТЬ
+
+    </button>
+
+</div>
+
 
 <script>
 
+/* ======================================================
+   ДОПОЛНИТЕЛЬНАЯ БЛОКИРОВКА ПКМ
+   ====================================================== */
 
-/* ============================================================
-   БЛОКИРОВКА ПКМ
-   ============================================================ */
+window.addEventListener(
+    "contextmenu",
+    function (event) {
 
-function blockRightMouse(event)
-{
-    if (!event)
+        event.preventDefault();
+
         return false;
 
-    if (event.button === 2)
-    {
+    },
+    true
+);
+
+
+/* ======================================================
+   БЛОКИРОВКА ПРАВОЙ КНОПКИ
+   ====================================================== */
+
+function blockRightMouse(event) {
+
+    if (
+        event.button === 2 ||
+        event.which === 3
+    ) {
+
         event.preventDefault();
 
         event.stopPropagation();
 
+        if (event.stopImmediatePropagation) {
+            event.stopImmediatePropagation();
+        }
+
         return false;
     }
 
-    return true;
 }
 
 
-/* ============================================================
-   CONTEXT MENU
-   ============================================================ */
+/* ======================================================
+   IP — КОПИРОВАНИЕ
+   ====================================================== */
 
-document.oncontextmenu = function(event)
-{
-    if (event)
-    {
-        event.preventDefault();
+function copyServerIP() {
 
-        event.stopPropagation();
-    }
+    var ip =
+        document.getElementById("serverIPText").innerText;
 
-    return false;
-};
+    copyText(ip, "copyStatus");
+
+}
 
 
-document.addEventListener(
-    "contextmenu",
-    function(event)
-    {
-        event.preventDefault();
+/* ======================================================
+   IP В ОКНЕ — КОПИРОВАНИЕ
+   ====================================================== */
 
-        event.stopPropagation();
+function copyFavoriteIP() {
 
-        return false;
-    },
-    true
-);
+    var ip =
+        document.getElementById("favoriteIP").innerText.trim();
 
+    copyText(ip, "favoriteCopyStatus");
 
-/* ============================================================
-   MOUSEDOWN
-   ============================================================ */
-
-document.addEventListener(
-    "mousedown",
-    function(event)
-    {
-        if (event.button === 2)
-        {
-            event.preventDefault();
-
-            event.stopPropagation();
-
-            return false;
-        }
-    },
-    true
-);
+}
 
 
-/* ============================================================
-   ONMOUSEDOWN
-   ============================================================ */
-
-document.onmousedown = function(event)
-{
-    if (event && event.button === 2)
-    {
-        event.preventDefault();
-
-        return false;
-    }
-};
-
-
-/* ============================================================
-   ЗАПРЕТ DRAG ДЛЯ КАРТИНОК
-   ============================================================ */
-
-document.addEventListener(
-    "dragstart",
-    function(event)
-    {
-        if (
-            event.target &&
-            event.target.tagName === "IMG"
-        )
-        {
-            event.preventDefault();
-
-            return false;
-        }
-    },
-    true
-);
-
-
-/* ============================================================
+/* ======================================================
    КОПИРОВАНИЕ ТЕКСТА
-   ============================================================ */
+   ====================================================== */
 
-function copyText(text, statusElement)
-{
+function copyText(text, statusId) {
+
+    var status =
+        document.getElementById(statusId);
+
+
+    /*
+       Старый способ для старого WebKit CS:S
+    */
+
     var textarea =
         document.createElement("textarea");
 
-
     textarea.value = text;
 
-    textarea.style.position =
-        "fixed";
+    textarea.style.position = "fixed";
 
-    textarea.style.left =
-        "-9999px";
+    textarea.style.left = "-9999px";
 
-    textarea.style.top =
-        "0";
+    textarea.style.top = "-9999px";
 
-    textarea.style.width =
-        "1px";
-
-    textarea.style.height =
-        "1px";
-
-    textarea.style.opacity =
-        "0";
-
-
-    document.body.appendChild(
-        textarea
-    );
-
+    document.body.appendChild(textarea);
 
     textarea.focus();
 
     textarea.select();
 
 
-    var success = false;
+    try {
 
+        document.execCommand("copy");
 
-    try
-    {
-        success =
-            document.execCommand("copy");
-    }
-    catch (error)
-    {
-        success = false;
+        status.innerText =
+            "IP скопирован!";
+
     }
 
+    catch (error) {
 
-    document.body.removeChild(
-        textarea
+        status.innerText =
+            "Не удалось скопировать IP.";
+
+    }
+
+
+    document.body.removeChild(textarea);
+
+
+    setTimeout(
+        function () {
+
+            status.innerText = "";
+
+        },
+        2000
     );
 
-
-    if (statusElement)
-    {
-        if (success)
-        {
-            statusElement.innerHTML =
-                "✓ IP СКОПИРОВАН";
-        }
-        else
-        {
-            statusElement.innerHTML =
-                "IP: " + text;
-        }
-    }
 }
 
 
-/* ============================================================
-   КОПИРОВАТЬ IP
-   ============================================================ */
+/* ======================================================
+   ОТКРЫТЬ ОКНО ИЗБРАННОГО
+   ====================================================== */
 
-function copyServerIP()
-{
-    var element =
-        document.getElementById(
-            "serverIPText"
-        );
+function showFavorite() {
 
-    var status =
-        document.getElementById(
-            "copyStatus"
-        );
-
-
-    if (!element)
-        return;
-
-
-    var ip =
-        element.innerText ||
-        element.textContent ||
-        "";
-
-
-    ip =
-        ip.replace(
-            /^\s+|\s+$/g,
-            ""
-        );
-
-
-    copyText(
-        ip,
-        status
-    );
-}
-
-
-/* ============================================================
-   КОПИРОВАТЬ IP ИЗ ОКНА
-   ============================================================ */
-
-function copyFavoriteIP()
-{
-    var element =
-        document.getElementById(
-            "favoriteIP"
-        );
-
-    var status =
-        document.getElementById(
-            "favoriteCopyStatus"
-        );
-
-
-    if (!element)
-        return;
-
-
-    var ip =
-        element.innerText ||
-        element.textContent ||
-        "";
-
-
-    ip =
-        ip.replace(
-            /^\s+|\s+$/g,
-            ""
-        );
-
-
-    copyText(
-        ip,
-        status
-    );
-}
-
-
-/* ============================================================
-   ПОКАЗАТЬ ИЗБРАННОЕ
-   ============================================================ */
-
-function showFavorite()
-{
     var modal =
-        document.getElementById(
-            "favoriteModal"
-        );
+        document.querySelector(".modal-box");
 
+    if (modal) {
 
-    if (!modal)
-        return;
+        modal.style.display = "block";
 
+    }
 
-    modal.className =
-        "modal active";
 }
 
 
-/* ============================================================
-   СКРЫТЬ ИЗБРАННОЕ
-   ============================================================ */
+/* ======================================================
+   ЗАКРЫТЬ ОКНО ИЗБРАННОГО
+   ====================================================== */
 
-function hideFavorite()
-{
+function hideFavorite() {
+
     var modal =
-        document.getElementById(
-            "favoriteModal"
-        );
+        document.querySelector(".modal-box");
 
+    if (modal) {
 
-    if (!modal)
-        return;
+        modal.style.display = "none";
 
+    }
 
-    modal.className =
-        "modal";
 }
-
-
-/* ============================================================
-   ESC
-   ============================================================ */
-
-document.onkeydown = function(event)
-{
-    event =
-        event ||
-        window.event;
-
-
-    if (
-        event.keyCode === 27 ||
-        event.which === 27
-    )
-    {
-        hideFavorite();
-    }
-};
-
-
-/* ============================================================
-   ПАРАМЕТРЫ URL
-   ============================================================ */
-
-function getParameter(name)
-{
-    var query =
-        window.location.search.substring(1);
-
-    var parts =
-        query.split("&");
-
-
-    for (
-        var i = 0;
-        i < parts.length;
-        i++
-    )
-    {
-        var pair =
-            parts[i].split("=");
-
-
-        var key =
-            decodeURIComponent(
-                pair[0] || ""
-            );
-
-
-        if (key === name)
-        {
-            return decodeURIComponent(
-                pair[1] || ""
-            );
-        }
-    }
-
-
-    return null;
-}
-
-
-/* ============================================================
-   ОБНОВИТЬ IP
-   ============================================================ */
-
-function updateServerIP()
-{
-    var ip =
-        getParameter("ip");
-
-    var port =
-        getParameter("port");
-
-
-    if (!ip || !port)
-        return;
-
-
-    var address =
-        ip + ":" + port;
-
-
-    var ipText =
-        document.getElementById(
-            "serverIPText"
-        );
-
-
-    var favoriteIP =
-        document.getElementById(
-            "favoriteIP"
-        );
-
-
-    if (ipText)
-    {
-        ipText.innerHTML =
-            address;
-    }
-
-
-    if (favoriteIP)
-    {
-        favoriteIP.innerHTML =
-            address;
-    }
-}
-
-
-/* ============================================================
-   СТАРТ
-   ============================================================ */
-
-updateServerIP();
-
 
 </script>
 
 
 </body>
+
 </html>
+```
