@@ -1,74 +1,731 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Добро пожаловать!</title>
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Добро пожаловать</title>
+
 <style>
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:#111;color:#eee;font-family:Arial,Helvetica,sans-serif}
-body{min-height:100%;overflow-x:hidden}
-.page{width:100%;background:#111}
-.header{height:64px;display:flex;align-items:center;padding:0 20px;background:#181818;border-bottom:2px solid #e5a900}
-.logo{font-size:29px;color:#e5a900;margin-right:12px;line-height:1}
-.title{font-size:24px;font-weight:700;color:#e5a900}
-.photo{width:100%;height:clamp(180px,32vw,430px);background:url("banner.jpg") center/cover no-repeat}
-.content{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:22px;padding:20px 22px 18px;background:#101010}
-section{min-width:0}
-h2{margin:0 0 10px;color:#e5a900;font-size:18px}
-p{margin:6px 0;font-size:14px;line-height:1.4;color:#ddd}
-.actions{display:flex;flex-wrap:wrap;gap:10px;padding:14px 18px;background:#171717;border-top:1px solid #2e2e2e}
-.button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 20px;border:1px solid #e5a900;border-radius:4px;background:#e5a900;color:#111;text-decoration:none;font-weight:700;font-size:14px;cursor:pointer}
-.button.secondary{background:transparent;color:#e5a900}
-.note{width:100%;font-size:12px;color:#999;margin-top:1px}
-@media(max-width:800px){
- .header{height:56px;padding:0 14px}.title{font-size:19px}.logo{font-size:24px}
- .photo{height:240px}
- .content{grid-template-columns:1fr;gap:16px;padding:16px}
- .actions{padding:12px;gap:8px}.button{flex:1 1 180px}
+
+* {
+    box-sizing: border-box;
 }
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+
+    background: #080808;
+
+    color: #eeeeee;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow-x: hidden;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    min-height: 100vh;
+}
+
+/* ============================================================
+   ОСНОВНОЙ БАННЕР
+   ============================================================ */
+
+.banner {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    background: #101010;
+
+    border: 1px solid #292929;
+
+    box-shadow:
+        0 0 30px rgba(0,0,0,0.8);
+
+    overflow: hidden;
+}
+
+/* ============================================================
+   ЗАГОЛОВОК
+   ============================================================ */
+
+.header {
+    height: 62px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 24px;
+
+    background: #111111;
+
+    border-bottom: 2px solid #e5a900;
+}
+
+.header-icon {
+    font-size: 30px;
+
+    margin-right: 15px;
+}
+
+.header-title {
+    color: #ffbd00;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+}
+
+/* ============================================================
+   КАРТИНКА
+   ============================================================ */
+
+.hero {
+    width: 100%;
+
+    background: #000;
+
+    line-height: 0;
+}
+
+.hero img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    max-height: 440px;
+
+    object-fit: cover;
+}
+
+/* ============================================================
+   ИНФОРМАЦИЯ
+   ============================================================ */
+
+.info {
+    display: grid;
+
+    grid-template-columns:
+        1.2fr
+        1fr
+        1fr;
+
+    gap: 25px;
+
+    padding: 22px 28px;
+
+    background: #101010;
+}
+
+.column h2 {
+    margin: 0 0 12px 0;
+
+    color: #ffbd00;
+
+    font-size: 18px;
+
+    text-transform: uppercase;
+}
+
+.column p {
+    margin: 6px 0;
+
+    color: #dddddd;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+.rules {
+    margin: 0;
+
+    padding-left: 20px;
+}
+
+.rules li {
+    margin-bottom: 7px;
+
+    color: #dddddd;
+
+    font-size: 14px;
+}
+
+/* ============================================================
+   IP
+   ============================================================ */
+
+.server-ip {
+    margin-top: 10px;
+
+    padding: 10px;
+
+    background: #181818;
+
+    border-left: 3px solid #ffbd00;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: bold;
+}
+
+/* ============================================================
+   КНОПКИ
+   ============================================================ */
+
+.buttons {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 18px 25px 24px;
+
+    background: #101010;
+}
+
+.button {
+    display: inline-flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    min-width: 230px;
+
+    height: 48px;
+
+    padding: 0 22px;
+
+    border: 1px solid #d79f00;
+
+    background: #171717;
+
+    color: #ffbd00;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s,
+        color 0.15s;
+}
+
+.button:hover {
+    background: #ffbd00;
+
+    color: #111111;
+}
+
+.button.vk {
+    border-color: #4d9cff;
+
+    color: #4d9cff;
+}
+
+.button.vk:hover {
+    background: #4d9cff;
+
+    color: white;
+}
+
+/* ============================================================
+   ОК
+   ============================================================ */
+
+.close-button {
+    width: 100%;
+
+    height: 50px;
+
+    border: 0;
+
+    border-top: 1px solid #292929;
+
+    background: #151515;
+
+    color: #ffbd00;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.close-button:hover {
+    background: #222222;
+}
+
+/* ============================================================
+   ОКНО ИЗБРАННОГО
+   ============================================================ */
+
+.modal {
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0,0,0,0.85);
+
+    z-index: 100;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-box {
+    width: 90%;
+
+    max-width: 600px;
+
+    padding: 25px;
+
+    background: #111111;
+
+    border: 1px solid #e5a900;
+
+    box-shadow:
+        0 0 30px rgba(0,0,0,0.9);
+}
+
+.modal-box h2 {
+    margin: 0 0 20px;
+
+    color: #ffbd00;
+
+    font-size: 21px;
+}
+
+.modal-box p {
+    color: #dddddd;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+}
+
+.server-address {
+    display: block;
+
+    margin: 18px 0;
+
+    padding: 14px;
+
+    background: #050505;
+
+    border: 1px solid #333333;
+
+    color: #ffbd00;
+
+    text-align: center;
+
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+.modal-close {
+    width: 100%;
+
+    height: 45px;
+
+    margin-top: 10px;
+
+    border: 1px solid #d79f00;
+
+    background: #171717;
+
+    color: #ffbd00;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    background: #ffbd00;
+
+    color: #111111;
+}
+
+/* ============================================================
+   МОБИЛЬНЫЕ / МАЛЕНЬКИЕ ОКНА
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+    .header {
+        height: 55px;
+
+        padding: 0 15px;
+    }
+
+    .header-title {
+        font-size: 18px;
+    }
+
+    .info {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+
+        padding: 18px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .button {
+        width: 100%;
+    }
+
+}
+
 </style>
 </head>
+
 <body>
-<div class="page">
-  <div class="header">
-    <div class="logo">⚡</div>
-    <div class="title">ДОБРО ПОЖАЛОВАТЬ НА СЕРВЕР</div>
-  </div>
 
-  <div class="photo" aria-label="Баннер сервера"></div>
+<div class="banner">
 
-  <div class="content">
-    <section>
-      <h2>ОСНОВНЫЕ ПРАВИЛА</h2>
-      <p>1. Запрещена распрыжка и банни-хоп!</p>
-      <p>2. Запрещено оскорблять игроков и админов!</p>
-      <p>3. Запрещены некорректные ники и клантеги!</p>
-      <p>4. Запрещена любая реклама!</p>
-      <p>5. Запрещено брать AWP когда б закрыто!</p>
-    </section>
+    <!-- ======================================================
+         ЗАГОЛОВОК
+         ====================================================== -->
 
-    <section>
-      <h2>ИНФОРМАЦИЯ</h2>
-      <p>Играйте честно и уважайте других игроков.</p>
-      <p>При проблемах обратитесь к администрации.</p>
-      <p>Желаем приятной игры!</p>
-    </section>
+    <div class="header">
 
-    <section>
-      <h2>КОНТАКТЫ</h2>
-      <p>VK: denok18</p>
-      <p>IP: <span id="serverAddress">194.93.2.218:27015</span></p>
-    </section>
-  </div>
+        <div class="header-icon">⚡</div>
 
-  <div class="actions">
-    <a class="button" href="https://vk.ru/denok18" target="_blank" rel="noopener">VK</a>
-    <a class="button secondary" href="steam://connect/194.93.2.218:27015">ДОБАВИТЬ СЕРВЕР В ИЗБРАННОЕ</a>
-    <a class="button secondary" href="javascript:window.close()">ПОНЯТНО</a>
-    <div class="note">Кнопка «Избранное» открывает подключение к серверу. Самостоятельно записать сервер в локальный список Favorites клиента CS:S через SourceMod нельзя — это ограничение клиента.</div>
-  </div>
+        <div class="header-title">
+            ДОБРО ПОЖАЛОВАТЬ НА СЕРВЕР
+        </div>
+
+    </div>
+
+
+    <!-- ======================================================
+         ТВОЯ КАРТИНКА
+         ====================================================== -->
+
+    <div class="hero">
+
+        <img
+            src="banner.jpg"
+            alt="Баннер сервера"
+        >
+
+    </div>
+
+
+    <!-- ======================================================
+         ИНФОРМАЦИЯ
+         ====================================================== -->
+
+    <div class="info">
+
+        <div class="column">
+
+            <h2>Основные правила</h2>
+
+            <ol class="rules">
+
+                <li>
+                    Запрещена распрыжка и банни-хоп!
+                </li>
+
+                <li>
+                    Запрещено оскорблять игроков и админов!
+                </li>
+
+                <li>
+                    Запрещены некорректные ники и клантеги!
+                </li>
+
+                <li>
+                    Запрещена любая реклама!
+                </li>
+
+                <li>
+                    Запрещено брать AWP когда запрещено!
+                </li>
+
+            </ol>
+
+        </div>
+
+
+        <div class="column">
+
+            <h2>Информация</h2>
+
+            <p>
+                Играйте честно и уважайте других игроков.
+            </p>
+
+            <p>
+                При проблемах обращайтесь к администрации.
+            </p>
+
+            <p>
+                Желаем приятной игры!
+            </p>
+
+            <div class="server-ip">
+
+                IP:
+                <span id="serverIP">
+                    194.93.22.218:27015
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="column">
+
+            <h2>Контакты</h2>
+
+            <p>
+                VK: denok18
+            </p>
+
+            <p>
+                IP:
+                <span id="serverIP2">
+                    194.93.22.218:27015
+                </span>
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================================
+         КНОПКИ
+         ====================================================== -->
+
+    <div class="buttons">
+
+        <a
+            class="button vk"
+            href="https://vk.ru/denok18"
+            target="_blank"
+        >
+            🔵 VK
+        </a>
+
+
+        <button
+            class="button"
+            onclick="showFavorite()"
+        >
+            ⭐ ДОБАВИТЬ В ИЗБРАННОЕ
+        </button>
+
+    </div>
+
+
+    <!-- ======================================================
+         ЗАКРЫТЬ
+         ====================================================== -->
+
+    <button
+        class="close-button"
+        onclick="closeBanner()"
+    >
+        ПОНЯТНО
+    </button>
+
 </div>
+
+
+<!-- ==========================================================
+     ОКНО ИЗБРАННОГО
+     ========================================================== -->
+
+<div
+    class="modal"
+    id="favoriteModal"
+>
+
+    <div class="modal-box">
+
+        <h2>
+            ⭐ ДОБАВИТЬ СЕРВЕР В ИЗБРАННОЕ
+        </h2>
+
+        <p>
+            Автоматически изменить список избранных
+            серверов Steam из HTML нельзя.
+        </p>
+
+        <p>
+            Поэтому используйте самый простой способ:
+        </p>
+
+        <p>
+            <b>1.</b> Откройте серверный браузер CS:S.<br>
+            <b>2.</b> Перейдите во вкладку <b>История</b>.<br>
+            <b>3.</b> Найдите наш сервер.<br>
+            <b>4.</b> Нажмите по нему ПКМ.<br>
+            <b>5.</b> Выберите <b>Добавить сервер в избранное</b>.
+        </p>
+
+        <div class="server-address" id="favoriteIP">
+            194.93.22.218:27015
+        </div>
+
+        <button
+            class="modal-close"
+            onclick="hideFavorite()"
+        >
+            ПОНЯТНО
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* ============================================================
+   Получаем параметры от SourceMod
+   ============================================================ */
+
+function getParameter(name)
+{
+    const params = new URLSearchParams(
+        window.location.search
+    );
+
+    return params.get(name);
+}
+
+
+/* ============================================================
+   IP сервера
+   ============================================================ */
+
+function updateServerIP()
+{
+    const ip = getParameter("ip");
+    const port = getParameter("port");
+
+    if (!ip || !port)
+        return;
+
+    const address = ip + ":" + port;
+
+    document.getElementById(
+        "serverIP"
+    ).textContent = address;
+
+    document.getElementById(
+        "serverIP2"
+    ).textContent = address;
+
+    document.getElementById(
+        "favoriteIP"
+    ).textContent = address;
+}
+
+
+/* ============================================================
+   Избранное
+   ============================================================ */
+
+function showFavorite()
+{
+    document
+        .getElementById("favoriteModal")
+        .classList.add("active");
+}
+
+function hideFavorite()
+{
+    document
+        .getElementById("favoriteModal")
+        .classList.remove("active");
+}
+
+
+/* ============================================================
+   Закрытие
+   ============================================================ */
+
+function closeBanner()
+{
+    /*
+     * Source Engine сам закрывает MOTD/VGUI после
+     * стандартной кнопки клиента.
+     *
+     * Поэтому здесь просто пытаемся закрыть окно.
+     */
+
+    try
+    {
+        window.close();
+    }
+    catch(e)
+    {
+        // Ничего не делаем.
+    }
+}
+
+
+/* ============================================================
+   Запуск
+   ============================================================ */
+
+updateServerIP();
+
+</script>
+
 </body>
 </html>
-
