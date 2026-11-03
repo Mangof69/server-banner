@@ -37,7 +37,7 @@ public void OnPluginStart()
     // Supports loading the plugin after the map has already started.
     char currentMap[PLATFORM_MAX_PATH];
     GetCurrentMap(currentMap, sizeof(currentMap));
-    if (currentMap[0] != '\\0')
+    if (currentMap[0] != 0)
     {
         CreateTimer(1.0, Timer_RegisterResources, _, TIMER_FLAG_NO_MAPCHANGE);
     }
