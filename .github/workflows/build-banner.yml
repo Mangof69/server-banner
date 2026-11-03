@@ -1,14 +1,15 @@
-name: Build Mango Server Banner v3.0.2
+name: Build Mango Server Banner v3.1.0
 
 on:
   push:
     branches: [main]
     paths:
       - "addons/sourcemod/scripting/mango_server_banner.sp"
+      - "addons/sourcemod/configs/mango_server_banner_links.cfg"
       - "tools/build_vtf.py"
       - ".github/workflows/build-banner.yml"
       - "banner.jpg"
-      - "README_BANNER_3.0.2.md"
+      - "README_BANNER_3.1.0.md"
   workflow_dispatch:
 
 permissions:
@@ -50,6 +51,9 @@ jobs:
           "UnlitGeneric"
           {
               "$basetexture" "overlays/mango_server_banner"
+              "$translucent" "1"
+              "$vertexalpha" "1"
+              "$vertexcolor" "1"
               "$ignorez" "1"
               "$nolod" "1"
               "$nomip" "1"
@@ -59,28 +63,30 @@ jobs:
       - name: Assemble package
         run: |
           mkdir -p build/package/addons/sourcemod/scripting
+          mkdir -p build/package/addons/sourcemod/configs
           cp addons/sourcemod/scripting/mango_server_banner.sp build/package/addons/sourcemod/scripting/
-          cp README_BANNER_3.0.2.md build/package/README.md
-          printf "3.0.2\n" > build/package/VERSION
+          cp addons/sourcemod/configs/mango_server_banner_links.cfg build/package/addons/sourcemod/configs/
+          cp README_BANNER_3.1.0.md build/package/README.md
+          printf "3.1.0\n" > build/package/VERSION
           cp -r cfg build/package/cfg
           (
             cd build/package
             find . -type f -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS.txt
-            zip -qr ../../Mango_Server_Banner_v3_0_2.zip .
+            zip -qr ../../Mango_Server_Banner_v3_1_0.zip .
           )
-          mkdir -p releases/v3.0.2
-          cp Mango_Server_Banner_v3_0_2.zip releases/v3.0.2/
-          cp build/package/addons/sourcemod/plugins/mango_server_banner.smx releases/v3.0.2/
-          cp build/package/materials/overlays/mango_server_banner.vmt releases/v3.0.2/
-          cp build/package/materials/overlays/mango_server_banner.vtf releases/v3.0.2/
-          sha256sum Mango_Server_Banner_v3_0_2.zip > releases/v3.0.2/SHA256SUMS.txt
+          mkdir -p releases/v3.1.0
+          cp Mango_Server_Banner_v3_1_0.zip releases/v3.1.0/
+          cp build/package/addons/sourcemod/plugins/mango_server_banner.smx releases/v3.1.0/
+          cp build/package/materials/overlays/mango_server_banner.vmt releases/v3.1.0/
+          cp build/package/materials/overlays/mango_server_banner.vtf releases/v3.1.0/
+          sha256sum Mango_Server_Banner_v3_1_0.zip > releases/v3.1.0/SHA256SUMS.txt
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Mango_Server_Banner_v3.0.2
+          name: Mango_Server_Banner_v3.1.0
           path: |
-            Mango_Server_Banner_v3_0_2.zip
+            Mango_Server_Banner_v3_1_0.zip
             build/package/addons/sourcemod/plugins/mango_server_banner.smx
             build/package/materials/overlays/*
           if-no-files-found: error
@@ -90,8 +96,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add releases/v3.0.2
+          git add releases/v3.1.0
           if ! git diff --cached --quiet; then
-            git commit -m "Publish Mango Server Banner v3.0.2 build"
+            git commit -m "Publish Mango Server Banner v3.1.0 build"
             git push
           fi
