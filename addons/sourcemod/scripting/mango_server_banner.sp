@@ -5,7 +5,7 @@
 #include <sdktools>
 #include <sdktools_stringtables>
 
-#define PLUGIN_VERSION "3.0.1"
+#define PLUGIN_VERSION "3.0.2"
 #define VMT_PATH "materials/overlays/mango_server_banner.vmt"
 #define VTF_PATH "materials/overlays/mango_server_banner.vtf"
 #define OVERLAY_MATERIAL "overlays/mango_server_banner"
