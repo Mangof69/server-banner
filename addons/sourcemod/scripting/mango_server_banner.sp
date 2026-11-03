@@ -6,7 +6,7 @@
 #include <sdktools>
 #include <sdktools_stringtables>
 
-#define PLUGIN_VERSION "2.0.4"
+#define PLUGIN_VERSION "2.0.5"
 #define VMT_PATH "materials/overlays/mango_server_banner.vmt"
 #define VTF_PATH "materials/overlays/mango_server_banner.vtf"
 #define OVERLAY_MATERIAL "overlays/mango_server_banner"
@@ -198,35 +198,60 @@ void RegisterDownload(const char[] path)
 
 void ApplyOverlay(int client, const char[] material)
 {
-    int originalFlags = GetCommandFlags("r_screenoverlay");
-
-    if (originalFlags == INVALID_FCVAR_FLAGS)
+    if (client < 1 || client > MaxClients || !IsClientInGame(client))
     {
-        LogError("[Mango Banner] Client %N: r_screenoverlay command does not exist on this game server.", client);
         return;
     }
 
-    // r_screenoverlay is marked FCVAR_CHEAT in CS:S. SourceMod's standard
-    // overlay implementation temporarily removes that flag while issuing
-    // the client command, then restores the exact original flags.
-    if (!SetCommandFlags("r_screenoverlay", originalFlags & ~FCVAR_CHEAT))
+    // r_screenoverlay is a CLIENT command. It is not registered in the
+    // dedicated server command table, so GetCommandFlags/SetCommandFlags
+    // on the server are invalid and must not be used as an existence check.
+    // SourceMod ClientCommand requires cl_restrict_server_commands 0.
+    int action = (material[0] == '\\0') ? 0 : 1;
+    QueryClientConVar(client, "cl_restrict_server_commands", OnServerCommandRestrictionChecked,
+        GetClientUserId(client) * 2 + action);
+}
+
+public void OnServerCommandRestrictionChecked(QueryCookie cookie, int client,
+    ConVarQueryResult result, const char[] cvarName, const char[] cvarValue, any value)
+{
+    int userid = value / 2;
+    bool show = (value % 2) == 1;
+    int target = GetClientOfUserId(userid);
+
+    if (target == 0 || !IsClientInGame(target))
     {
-        LogError("[Mango Banner] Could not temporarily clear FCVAR_CHEAT from r_screenoverlay.");
         return;
     }
 
-    if (material[0] == '\0')
+    if (result != ConVarQuery_Okay)
     {
-        ClientCommand(client, "r_screenoverlay \"\"");
+        LogError("[Mango Banner] Cannot query %s from %N (query result %d). Overlay command not sent.",
+            cvarName, target, result);
+        PrintToChat(target, "[Mango Banner] Cannot check client command permissions. See server console.");
+        return;
+    }
+
+    if (StringToInt(cvarValue) != 0)
+    {
+        LogError("[Mango Banner] %N has %s=%s. ClientCommand is blocked; set it to 0 in the client console.",
+            target, cvarName, cvarValue);
+        PrintToChat(target, "[Mango Banner] Overlay blocked by %s. Set %s 0 in your game console.",
+            cvarName, cvarName);
+        return;
+    }
+
+    if (show)
+    {
+        ClientCommand(target, "r_screenoverlay \\"%s\"", OVERLAY_MATERIAL);
     }
     else
     {
-        ClientCommand(client, "r_screenoverlay \"%s\"", material);
+        ClientCommand(target, "r_screenoverlay \\"\\""); 
     }
 
-    SetCommandFlags("r_screenoverlay", originalFlags);
-
-    LogMessage("[Mango Banner] Sent overlay command to %N: '%s'.", client, material);
+    LogMessage("[Mango Banner] Sent client overlay command to %N (show=%d, %s=%s).",
+        target, show, cvarName, cvarValue);
 }
 
 public Action Command_ShowOverlay(int client, int args)
