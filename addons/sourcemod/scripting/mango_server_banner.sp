@@ -32,6 +32,8 @@ public void OnPluginStart()
     RegAdminCmd("sm_mango_banner_status", Command_Status, ADMFLAG_GENERIC, "Show Mango Banner resource status");
     RegAdminCmd("sm_mango_banner_debug", Command_Debug, ADMFLAG_GENERIC, "Show Mango Banner download table diagnostics");
 
+    AutoExecConfig(true, "sm_mango_banner");
+
     PrintToServer("[Mango Banner] v%s loaded. Waiting for map resource registration.", PLUGIN_VERSION);
 
     // Supports loading the plugin after the map has already started.
@@ -57,6 +59,12 @@ public void OnMapStart()
             QueueOverlay(client);
         }
     }
+}
+
+public void OnConfigsExecuted()
+{
+    // Re-check after server.cfg and the plugin config have both executed.
+    PrepareResources();
 }
 
 public void OnClientPutInServer(int client)
