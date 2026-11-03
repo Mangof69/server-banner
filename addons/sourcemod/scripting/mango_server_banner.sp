@@ -35,7 +35,9 @@ public void OnPluginStart()
     PrintToServer("[Mango Banner] v%s loaded. Waiting for map resource registration.", PLUGIN_VERSION);
 
     // Supports loading the plugin after the map has already started.
-    if (IsMapRunning())
+    char currentMap[PLATFORM_MAX_PATH];
+    GetCurrentMap(currentMap, sizeof(currentMap));
+    if (currentMap[0] != '\\0')
     {
         CreateTimer(1.0, Timer_RegisterResources, _, TIMER_FLAG_NO_MAPCHANGE);
     }
