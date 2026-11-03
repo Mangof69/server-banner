@@ -61,7 +61,7 @@ canvas.alpha_composite(artwork, (x, y))
 pixels = canvas.tobytes()
 
 header = bytearray(HEADER_SIZE)
-header[0:4] = b"VTF\\x00"
+header[0:4] = b"VTF\x00"
 struct.pack_into("<II", header, 4, 7, 2)
 struct.pack_into("<I", header, 12, HEADER_SIZE)
 struct.pack_into("<HH", header, 16, CANVAS_WIDTH, CANVAS_HEIGHT)
@@ -81,7 +81,7 @@ dst.write_bytes(header + pixels)
 
 # Read-back validation: verify the VTF 7.2 header and exact image payload.
 data = dst.read_bytes()
-if data[:4] != b"VTF\\x00":
+if data[:4] != b"VTF\x00":
     raise SystemExit("VTF signature validation failed")
 major, minor = struct.unpack_from("<II", data, 4)
 header_size = struct.unpack_from("<I", data, 12)[0]
