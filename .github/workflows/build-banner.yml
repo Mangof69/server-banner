@@ -1,0 +1,98 @@
+name: Build Mango Server Banner
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "addons/sourcemod/scripting/mango_server_banner.sp"
+      - "tools/build_vtf.py"
+      - ".github/workflows/build-banner.yml"
+      - "banner.jpg"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install build tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl unzip zip python3 python3-pip
+          python3 -m pip install --break-system-packages Pillow
+
+      - name: Download SourceMod 1.12 compiler
+        run: |
+          curl -fL "https://sm.alliedmods.net/smdrop/1.12/sourcemod-1.12.0-git7260-linux.tar.gz" -o /tmp/sourcemod.tar.gz
+          mkdir -p /tmp/sourcemod
+          tar -xzf /tmp/sourcemod.tar.gz -C /tmp/sourcemod
+          test -x /tmp/sourcemod/addons/sourcemod/scripting/spcomp || chmod +x /tmp/sourcemod/addons/sourcemod/scripting/spcomp
+
+      - name: Compile SourcePawn plugin
+        run: |
+          mkdir -p build/package/addons/sourcemod/plugins
+          /tmp/sourcemod/addons/sourcemod/scripting/spcomp \
+            addons/sourcemod/scripting/mango_server_banner.sp \
+            -i /tmp/sourcemod/addons/sourcemod/scripting/include \
+            -o build/package/addons/sourcemod/plugins/mango_server_banner.smx
+
+      - name: Build VTF and VMT assets
+        run: |
+          mkdir -p build/package/materials/overlays
+          python3 tools/build_vtf.py banner.jpg build/package/materials/overlays/mango_server_banner.vtf
+          cat > build/package/materials/overlays/mango_server_banner.vmt <<'EOF'
+          "UnlitGeneric"
+          {
+              "$basetexture" "overlays/mango_server_banner"
+              "$translucent" "1"
+              "$vertexalpha" "1"
+              "$ignorez" "1"
+              "$nolod" "1"
+              "$nomip" "1"
+          }
+          EOF
+
+      - name: Assemble flat install package
+        run: |
+          mkdir -p build/package/addons/sourcemod/scripting
+          cp addons/sourcemod/scripting/mango_server_banner.sp build/package/addons/sourcemod/scripting/
+          cp README_BANNER_2.0.4.md build/package/README.md
+          printf "2.0.4\n" > build/package/VERSION
+          cp -r cfg build/package/cfg
+          (
+            cd build/package
+            find . -type f -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS.txt
+            zip -qr ../../Mango_Server_Banner_v2_0_4.zip .
+          )
+          mkdir -p releases/v2.0.4
+          cp Mango_Server_Banner_v2_0_4.zip releases/v2.0.4/
+          cp build/package/addons/sourcemod/plugins/mango_server_banner.smx releases/v2.0.4/
+          cp build/package/materials/overlays/mango_server_banner.vmt releases/v2.0.4/
+          cp build/package/materials/overlays/mango_server_banner.vtf releases/v2.0.4/
+          sha256sum Mango_Server_Banner_v2_0_4.zip > releases/v2.0.4/SHA256SUMS.txt
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Mango_Server_Banner_v2.0.4
+          path: |
+            Mango_Server_Banner_v2_0_4.zip
+            build/package/addons/sourcemod/plugins/mango_server_banner.smx
+            build/package/materials/overlays/*
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publish compiled files to repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add releases/v2.0.4
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish Mango Server Banner v2.0.4 build"
+            git push
+          fi
