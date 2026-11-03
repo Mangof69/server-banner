@@ -1,9 +1,9 @@
-# Mango Server Banner v2.0.4
+# Mango Server Banner v2.0.5
 
 Author: Mango  
 Target: Counter-Strike: Source + SourceMod 1.12
 
-## What changed in 2.0.4
+## What changed in 2.0.5
 
 - Fixes the CS:S overlay invocation: `r_screenoverlay` is flagged `FCVAR_CHEAT`. The plugin now temporarily clears that flag while issuing the client command, then restores the exact original flags. This follows the established SourceMod overlay implementation pattern.
 - Verifies that both banner files are present in the server's `downloadables` network string table, rather than treating file existence alone as proof of client delivery.
