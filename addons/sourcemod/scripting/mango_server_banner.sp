@@ -1,3 +1,4 @@
+// v2.0.4 build trigger: compile against SourceMod 1.12 stable build 7260.
 #pragma semicolon 1
 #pragma newdecls required
 
