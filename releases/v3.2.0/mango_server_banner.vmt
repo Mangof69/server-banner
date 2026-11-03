@@ -1,0 +1,5 @@
+"UnlitGeneric"
+{
+    "$basetexture" "overlays/mango_server_banner"
+    "$translucent" "1"
+}
